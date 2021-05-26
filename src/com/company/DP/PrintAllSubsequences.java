@@ -1,6 +1,5 @@
 package com.company.DP;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -21,7 +20,7 @@ public class PrintAllSubsequences {
         return l;
     }
 
-    public static void process(char @NotNull [] chars, int index, HashSet<String> l, String path){
+    public static void process(char[] chars, int index, HashSet<String> l, String path){
         if(index == chars.length){
             l.add(path);
             return;
