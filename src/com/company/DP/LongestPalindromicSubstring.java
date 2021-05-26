@@ -1,4 +1,7 @@
 package com.company.DP;
+
+import static com.company.StringSearch.KMP.getRandomString;
+
 /*
 *
 * 5. 最长回文子串
@@ -31,9 +34,11 @@ package com.company.DP;
 s 仅由数字和英文字母（大写和/或小写）组成*/
 public class LongestPalindromicSubstring {
     public static void main(String[] args) {
-        System.out.println(new LongestPalindromicSubstring().longestPalindrome1("babad"));
+        String s = "asdasdsasdasdasdasd";
+        System.out.println(longestPalindrome(s));
+        System.out.println(longestPalindrome1(s));
     }
-    public String longestPalindrome(String s) {
+    public static String longestPalindrome(String s) {
          int len = s.length();
          boolean[][] dp = new boolean[len][len];
          for(int i = 0; i < len; i++){
@@ -63,9 +68,9 @@ public class LongestPalindromicSubstring {
          }
          return s.substring(begin,begin+maxLen);
     }
-    public String longestPalindrome1(String s) {
+    public static String longestPalindrome1(String s) {
         String result = "";
-        for(int i = 1 ; i < s.length(); i++){
+        for(int i = 0 ; i < s.length(); i++){
             String tem1 = getSubString(s,i,i);
             String tem2 = getSubString(s,i,i+1);
             int max = Math.max(Math.max(tem1.length(),tem2.length()),result.length());
@@ -79,7 +84,7 @@ public class LongestPalindromicSubstring {
 
     }
     public static String getSubString(String s,int i, int j){
-        while(i > 0 && j < s.length() && s.charAt(i) == s.charAt(j)){
+        while(i >= 0 && j < s.length() && s.charAt(i) == s.charAt(j)){
             i--;
             j++;
         }
