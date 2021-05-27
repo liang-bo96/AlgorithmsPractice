@@ -37,7 +37,6 @@ public class N72BianJiJuLi {
 
     public int minDistance(String word1, String word2) {
         if(word1.length() == 0 || word2.length()==0){
-
             return word1.length()== 0 ? word2.length() : word1.length();
         }
         if(word1.charAt(0) == word2.charAt(0)){
