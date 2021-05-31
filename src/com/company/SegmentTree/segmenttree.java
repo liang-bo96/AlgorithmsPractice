@@ -26,13 +26,13 @@ public class segmenttree {
     }
 
     public static void update_tree(int cur_node ,int start,int end,int key, int val){
-        if(start == end){
-            if(start == key){
-                TreeArr[cur_node] = val;
-            }
+        System.out.println(start+"  "+end);
+        if(start == end && start == key){
+            TreeArr[cur_node] = val;
             return;
         }
         int mid = (start + end) / 2;
+        System.out.println(mid);
         int left_node = cur_node * 2 + 1;
         int right_node = cur_node * 2 + 2;
         if(key <= mid){
