@@ -38,7 +38,7 @@ k 是一个正整数，它的值小于或等于链表的长度。
 public class ReverseNodesInkGroup {
     public static void main(String[] args) {
         ListNode head = generateListNode();
-        ListNode newHead = reverseKGroup(head, 2);
+        ListNode newHead = ReverseKListNode(head, 2);
         while(newHead != null){
             System.out.println(newHead);
             newHead = newHead.next;
@@ -67,5 +67,19 @@ public class ReverseNodesInkGroup {
             cur = next;
         }
         return pre;
+    }
+    //练习
+    public static ListNode ReverseKListNode(ListNode head,int k){
+        ListNode start = head;
+        ListNode end = head;
+        for (int i = 0; i < k; i++) {
+            if(end == null){
+                return start;
+            }
+            end = end.next;
+        }
+        ListNode newHead = RrverseAtoB(start, end);
+        start.next = ReverseKListNode(end,k);
+        return newHead;
     }
 }
