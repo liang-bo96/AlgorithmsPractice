@@ -27,19 +27,20 @@ import java.util.List;
 -109 <= target <= 109*/
 public class N18FourSum {
     public static void main(String[] args) {
-        System.out.println(fourSum(new int[]{1,0,-1,0,-2,2},0));
+        System.out.println(fourSum(new int[]{1, 0, -1, 0, -2, 2}, 0));
     }
+
     public static List<List<Integer>> fourSum(int[] nums, int target) {
-        if (nums == null || nums.length < 4){
+        if (nums == null || nums.length < 4) {
             return new ArrayList<>();
         }
         Arrays.sort(nums);
         List<List<Integer>> list = new ArrayList<>();
         for (int i = 0; i < nums.length - 3; i++) {
-            if(i > 0 && nums[i] == nums[i - 1]) continue;
-            List<List<Integer>> threeSum = ThreeSum(Arrays.copyOfRange(nums,i+1,nums.length),target-nums[i]);
-            if(threeSum != null){
-                for(List<Integer> tem :threeSum){
+            if (i > 0 && nums[i] == nums[i - 1]) continue;
+            List<List<Integer>> threeSum = ThreeSum(Arrays.copyOfRange(nums, i + 1, nums.length), target - nums[i]);
+            if (threeSum != null) {
+                for (List<Integer> tem : threeSum) {
                     tem.add(nums[i]);
                     list.add(tem);
                 }
@@ -48,27 +49,27 @@ public class N18FourSum {
         return list;
     }
 
-    public static List<List<Integer>> ThreeSum(int[]arr,int target){
-        if(arr == null || arr.length < 3){
+    public static List<List<Integer>> ThreeSum(int[] arr, int target) {
+        if (arr == null || arr.length < 3) {
             return null;
         }
 
         List<List<Integer>> result = new ArrayList<>();
         for (int i = 0; i < arr.length - 2; i++) {
-            if(i > 0 && arr[i] == arr[i - 1]) continue;
+            if (i > 0 && arr[i] == arr[i - 1]) continue;
             int left = i + 1;
             int right = arr.length - 1;
-            while(left < right){
+            while (left < right) {
                 int sum = arr[i] + arr[left] + arr[right];
-                if(sum == target){
-                    List<Integer> temlist = new ArrayList<Integer>(Arrays.asList(arr[i],arr[left],arr[right]));
+                if (sum == target) {
+                    List<Integer> temlist = new ArrayList<Integer>(Arrays.asList(arr[i], arr[left], arr[right]));
                     result.add(temlist);
-                    while(left < right && arr[left] == arr[++left]);
-                    while(left < right && arr[right] == arr[--right]);
-                }else if(sum < target){
-                    while(left < right && arr[left] == arr[++left]);
-                }else{
-                    while(left < right && arr[right] == arr[--right]);
+                    while (left < right && arr[left] == arr[++left]) ;
+                    while (left < right && arr[right] == arr[--right]) ;
+                } else if (sum < target) {
+                    while (left < right && arr[left] == arr[++left]) ;
+                } else {
+                    while (left < right && arr[right] == arr[--right]) ;
                 }
             }
         }
