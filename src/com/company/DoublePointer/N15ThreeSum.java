@@ -23,32 +23,33 @@ import java.util.*;
 * */
 public class N15ThreeSum {
     public static void main(String[] args) {
-        System.out.println(threeSum(new int[]{0,0,0}));
+        System.out.println(threeSum(new int[]{0, 0, 0}));
     }
+
     public static List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
-        if(nums == null || nums.length < 3){
-            return  result;
+        if (nums == null || nums.length < 3) {
+            return result;
         }
         Arrays.sort(nums);
         int i = 0;
         int j = nums.length - 1;
-        if(nums[i] > 0 || nums[j] < 0){
+        if (nums[i] > 0 || nums[j] < 0) {
             return result;
         }
-        for (int k =0; k < nums.length; k++) {
-            if(k > 0 && nums[k] == nums[k - 1])continue;
-            int left = k +1;
+        for (int k = 0; k < nums.length; k++) {
+            if (k > 0 && nums[k] == nums[k - 1]) continue;
+            int left = k + 1;
             int right = nums.length - 1;
-            while(left < right){
-                if(nums[k] + nums[left] + nums[right] == 0){
-                    result.add(Arrays.asList(nums[k],nums[left],nums[right]));
-                    while(left < right && nums[left] == nums[++left]);
-                    while(left < right && nums[right] == nums[--right]);
-                }else if(nums[k] + nums[left] + nums[right] < 0){
-                    while(left < right && nums[left] == nums[++left]);
-                }else{
-                    while(left < right && nums[right] == nums[--right]);
+            while (left < right) {
+                if (nums[k] + nums[left] + nums[right] == 0) {
+                    result.add(Arrays.asList(nums[k], nums[left], nums[right]));
+                    while (left < right && nums[left] == nums[++left]) ;
+                    while (left < right && nums[right] == nums[--right]) ;
+                } else if (nums[k] + nums[left] + nums[right] < 0) {
+                    while (left < right && nums[left] == nums[++left]) ;
+                } else {
+                    while (left < right && nums[right] == nums[--right]) ;
                 }
             }
         }
@@ -56,24 +57,25 @@ public class N15ThreeSum {
     }
 
 }
+
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
         Arrays.sort(nums);
         List<List<Integer>> res = new ArrayList<>();
-        for(int k = 0; k < nums.length - 2; k++){
-            if(nums[k] > 0) break;
-            if(k > 0 && nums[k] == nums[k - 1]) continue;
+        for (int k = 0; k < nums.length - 2; k++) {
+            if (nums[k] > 0) break;
+            if (k > 0 && nums[k] == nums[k - 1]) continue;
             int left = k + 1, right = nums.length - 1;
-            while(left < right){
+            while (left < right) {
                 int sum = nums[k] + nums[left] + nums[right];
-                if(sum < 0){
-                    while(left < right && nums[left] == nums[++left]);
+                if (sum < 0) {
+                    while (left < right && nums[left] == nums[++left]) ;
                 } else if (sum > 0) {
-                    while(left < right && nums[right] == nums[--right]);
+                    while (left < right && nums[right] == nums[--right]) ;
                 } else {
                     res.add(new ArrayList<Integer>(Arrays.asList(nums[k], nums[left], nums[right])));
-                    while(left < right && nums[left] == nums[++left]);
-                    while(left < right && nums[right] == nums[--right]);
+                    while (left < right && nums[left] == nums[++left]) ;
+                    while (left < right && nums[right] == nums[--right]) ;
                 }
             }
         }

@@ -30,9 +30,9 @@ package com.company.DoublePointer;
 n = height.length
 2 <= n <= 3 * 104
 0 <= height[i] <= 3 * 104*/
-public class N11 {
+public class N11_container_with_most_water {
     public static void main(String[] args) {
-        System.out.println(new N11().maxArea(new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7}));
+        System.out.println(new N11_container_with_most_water().maxArea(new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7}));
     }
     public int maxArea(int[] height) {
         int i = 0;
