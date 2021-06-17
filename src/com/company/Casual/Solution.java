@@ -1,14 +1,10 @@
 package com.company.Casual;
 
+import com.company.LinkedList.ListNode;
+
 import java.util.*;
 
- class ListNode {
-    int val;
-    ListNode next = null;
-    public ListNode(int val) {
-      this.val = val;
-    }
-  }
+
 
 
 public class Solution {
