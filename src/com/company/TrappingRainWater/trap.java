@@ -56,7 +56,7 @@ public class trap {
             result += (Math.min(left[i],right[i]) - height[i]) > 0
                     ? Math.min(left[i],right[i]) - height[i] : 0;
         }
-        return result;
+        return   result;
     }
 
 
