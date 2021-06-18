@@ -1,8 +1,9 @@
 package com.company.BFS;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import com.company.Graph.Edge;
+import com.company.Graph.Graph;
+import com.company.Graph.Node;
+
 import java.util.*;
 
 /*
@@ -38,62 +39,90 @@ beginWord、endWord 和 wordList[i] 由小写英文字母组成
 beginWord != endWord
 wordList 中的所有字符串 互不相同*/
 public class N127_Word_Ladder {
-
-        Map<String, Integer> wordId = new HashMap<String, Integer>();
-        List<List<Integer>> edge = new ArrayList<List<Integer>>();
-        int nodeNum = 0;
-
-        public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-            for (String word : wordList) {
-                addEdge(word);
+    public static void main(String[] args) {
+        List<String> list = new ArrayList<>(Arrays.asList("hot", "dot", "dog", "lot", "log","cog"));
+        System.out.println(new N127_Word_Ladder().ladderLength("mmt", "cog", list));
+    }
+    static String[] wlist;
+    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+        wlist = new String[wordList.size() + 1];
+        wordList.add(beginWord);
+        Graph graph = buildGraph(wordList);
+        int begin = 0;
+        int end = -1;
+        for(int i = 0; i < wlist.length; i++){
+            if(wlist[i].equals(beginWord)){
+                begin = i;
             }
-            addEdge(beginWord);
-            if (!wordId.containsKey(endWord)) {
-                return 0;
+            if(wlist[i].equals(endWord)){
+                end = i;
             }
-            int[] dis = new int[nodeNum];
-            Arrays.fill(dis, Integer.MAX_VALUE);
-            int beginId = wordId.get(beginWord), endId = wordId.get(endWord);
-            dis[beginId] = 0;
-
-            Queue<Integer> que = new LinkedList<Integer>();
-            que.offer(beginId);
-            while (!que.isEmpty()) {
-                int x = que.poll();
-                if (x == endId) {
-                    return dis[endId] / 2 + 1;
+        }
+        //end = -1说明数组中未找到endword
+        //get = null说明beginword没有与数组中任意一个单词有关联
+        if(end == -1 ||graph.nodes.get(begin) == null) return 0;
+        Node begin_node = graph.nodes.get(begin);
+        begin_node.distance = 1;
+        Node end_node = graph.nodes.get(end);
+        Queue<Node> queue = new LinkedList<>();
+        HashSet<Node> set = new HashSet<>();
+        queue.add(begin_node);
+        set.add(begin_node);
+        while(!queue.isEmpty()){
+            Node cur = queue.poll();
+            for(Node tem : cur.nexts){
+                if(tem.distance > cur.distance + 1){
+                    tem.distance = cur.distance + 1;
                 }
-                for (int it : edge.get(x)) {
-                    if (dis[it] == Integer.MAX_VALUE) {
-                        dis[it] = dis[x] + 1;
-                        que.offer(it);
+                if(!set.contains(tem)){
+                    set.add(tem);
+                    queue.add(tem);
+                }
+            }
+        }
+        //等于MAX说明权重始终未被修改，返回0
+        return end_node.distance == Integer.MAX_VALUE ? 0 :end_node.distance ;
+    }
+    public static Graph buildGraph(List<String> wordList){
+        Graph graph = new Graph();
+
+        for (int i = 0; i < wordList.size(); i++) {
+            wlist[i] = wordList.get(i);
+        }
+        for (int i = 0; i < wlist.length; i++) {
+            for (int j = i + 1; j < wlist.length; j++) {
+                if(diff(wlist[i],wlist[j])){
+                    if(!graph.nodes.containsKey(i)){
+                        graph.nodes.put(i,new Node(i));
                     }
+                    if(!graph.nodes.containsKey(j)){
+                        graph.nodes.put(j,new Node(j));
+                    }
+                    Node from = graph.nodes.get(i);
+                    Node to = graph.nodes.get(j);
+                    Edge edge = new Edge(1, from, to);
+                    graph.edges.add(edge);
+                    from.out++;
+                    from.in++;
+                    from.edges.add(edge);
+                    from.nexts.add(to);
+                    to.out++;
+                    to.in++;
+                    to.edges.add(edge);
+                    to.nexts.add(from);
                 }
             }
-            return 0;
         }
+        return graph;
+    }
 
-        public void addEdge(String word) {
-            addWord(word);
-            int id1 = wordId.get(word);
-            char[] array = word.toCharArray();
-            int length = array.length;
-            for (int i = 0; i < length; ++i) {
-                char tmp = array[i];
-                array[i] = '*';
-                String newWord = new String(array);
-                addWord(newWord);
-                int id2 = wordId.get(newWord);
-                edge.get(id1).add(id2);
-                edge.get(id2).add(id1);
-                array[i] = tmp;
+    public static boolean diff(String s1,String s2 ){
+        int count = 0;
+        for (int i = 0; i < s1.length(); i++) {
+            if(s1.charAt(i) != s2.charAt(i)){
+                count++;
             }
         }
-
-        public void addWord(String word) {
-            if (!wordId.containsKey(word)) {
-                wordId.put(word, nodeNum++);
-                edge.add(new ArrayList<Integer>());
-            }
-        }
+        return count == 1;
+    }
 }
