@@ -28,28 +28,12 @@ public class Code01_BFS {
 		}
 	}
 
-	public static void bfs2(Node start){
-		HashSet<Node> set = new HashSet<>();
-		Queue<Node> list = new LinkedList<>();
-		set.add(start);
-		list.add(start);
-		while (!list.isEmpty()){
-			Node poll = list.poll();
-			System.out.println(poll.value);
-			for(Node node: poll.nexts){
-				if(!set.contains(node)){
-					set.add(node);
-					list.add(node);
-				}
-			}
-		}
-	}
 
 
 
 	public static void main(String[] args) {
 		Node tree = createTree();
-		bfs2(tree);
+		bfs(tree);
 	}
 
 
