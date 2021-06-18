@@ -1,5 +1,7 @@
 package com.company.Tree;
 
+import com.company.BFS.TreeNode;
+
 public class RecursiveTree extends RecursiveTravel{
     public static void main(String[] args) {
         RecursiveTree recursiveTree = new RecursiveTree();

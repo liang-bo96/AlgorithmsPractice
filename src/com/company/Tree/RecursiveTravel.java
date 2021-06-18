@@ -1,5 +1,6 @@
 package com.company.Tree;
 
+import com.company.BFS.TreeNode;
 import com.company.Sort.SelectionSort;
 import com.sun.xml.internal.fastinfoset.tools.XML_SAX_StAX_FI;
 import sun.reflect.generics.tree.Tree;
@@ -237,54 +238,4 @@ public class RecursiveTravel extends SelectionSort {
         return E;
     }
 }
-class TreeNode{
-    private String value;
-    private TreeNode left;
-    private TreeNode right;
 
-    @Override
-    public String toString() {
-        return "TreeNode{" +
-                "value=" + value +
-                '}';
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-
-    public TreeNode(String value) {
-        this.value = value;
-    }
-
-    public TreeNode() {
-    }
-
-    public TreeNode(String value, TreeNode left, TreeNode right) {
-        this.value = value;
-        this.left = left;
-        this.right = right;
-    }
-
-
-
-    public TreeNode getLeft() {
-        return left;
-    }
-
-    public void setLeft(TreeNode left) {
-        this.left = left;
-    }
-
-    public TreeNode getRight() {
-        return right;
-    }
-
-    public void setRight(TreeNode right) {
-        this.right = right;
-    }
-}

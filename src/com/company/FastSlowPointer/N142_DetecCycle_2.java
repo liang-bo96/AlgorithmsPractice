@@ -1,7 +1,7 @@
 package com.company.FastSlowPointer;
 
 import com.company.LinkedList.ListNode;
-
+//找出有环链表的如环节点
 public class N142_DetecCycle_2 {
     public static void main(String[] args) {
         ListNode a = new ListNode(3);

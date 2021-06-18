@@ -1,5 +1,7 @@
 package com.company.ReverseList;
 
+import com.company.LinkedList.ListNode;
+
 public class Basic {
 
     public static ListNode generateListNode(){
@@ -43,18 +45,6 @@ public class Basic {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     public static ListNode BasicreverseList(ListNode head) {
          ListNode first = null;
          while(head != null){
@@ -76,19 +66,5 @@ public class Basic {
         return last;
     }
 }
-class ListNode {
-    int val;
-    ListNode next = null;
-    public ListNode(int val) {
-        this.val = val;
-    }
 
-    @Override
-    public String toString() {
-        return "ListNode{" +
-                "val=" + val +
-                ", next=" + next +
-                '}';
-    }
-}
 

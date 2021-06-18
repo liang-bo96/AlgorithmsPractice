@@ -1,5 +1,7 @@
 package com.company.ReverseList;
 
+import com.company.LinkedList.ListNode;
+
 import static com.company.ReverseList.Basic.generateListNode;
 
 public class FirstKReverse {
