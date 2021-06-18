@@ -36,7 +36,7 @@ beginWord != endWord
 wordList 中的所有字符串 互不相同*/
 public class N127_Word_Ladder {
     public static void main(String[] args) {
-        List<String> list = new ArrayList<String>(Arrays.asList(new String[]{"hot", "dot", "dog", "lot", "log","cog"}));
+        List<String> list = new ArrayList<>(Arrays.asList("hot", "dot", "dog", "lot", "log","cog"));
         System.out.println(new N127_Word_Ladder().ladderLength("mmt", "cog", list));
     }
     static String[] wlist;
