@@ -24,8 +24,8 @@ public class LevelTravel {
 //        TreeNode treeNode = BuildPreTravelTree(strings);
 //        PreTravelTree(treeNode);
         Queue<String> strings1 = SerilizableTree(tree);
-        TreeNode treeNode1 = BuildSerlizableTree(strings1);
-        SerilizableTree(treeNode1);
+//        TreeNode treeNode1 = BuildSerlizableTree(strings1);
+//        SerilizableTree(treeNode1);
     }
 //    public static void levelTravel(TreeNode a){
 //        while (!queue.isEmpty()){
@@ -157,6 +157,10 @@ public class LevelTravel {
         else{
             return new TreeNode(s);
         }
+    }
+    public static TreeNode buildNode(int s){
+            return new TreeNode(s);
+
     }
 
 
