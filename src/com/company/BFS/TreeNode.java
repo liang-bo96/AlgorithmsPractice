@@ -29,7 +29,8 @@ public class TreeNode{
         this.value = value;
     }
 
-    public TreeNode() {
+    public TreeNode(int i) {
+        val = i;
     }
 
     public TreeNode(String value, TreeNode left, TreeNode right) {
