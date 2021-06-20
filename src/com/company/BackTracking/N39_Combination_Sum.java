@@ -6,18 +6,10 @@ import java.util.Random;
 
 public class N39_Combination_Sum {
     public static void main(String[] args) {
-//        for (int j = 0; j < 10; j++) {
-//            int[] tem = new int[5];
-//            for (int i = 0; i < 5; i++) {
-//                tem[i] = new Random().nextInt(10);
-//            }
-        int[] tem = new int[]{ 3, 4, 5};
+        int[] tem = new int[]{ 3, 4, 5,6,7};
         N39_Combination_Sum sum = new N39_Combination_Sum();
         System.out.println(sum.combinationSum(tem, 30));
         System.out.println(sum.combinationSum2(tem, 30));
-        System.out.println(sum.combinationSum(tem, 25).equals(sum.combinationSum2(tem, 25)));
-//            System.out.println("____________________________");
-//        }
     }
 
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
