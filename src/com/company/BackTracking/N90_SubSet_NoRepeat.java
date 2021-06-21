@@ -8,6 +8,9 @@ import java.util.HashSet;
 import java.util.*;
 
 public class N90_SubSet_NoRepeat {
+    //set放在最后过滤 不剪枝
+    //剪枝看N47_Pailie
+
     Set<List<Integer>> set = new HashSet<>();
     public List<List<Integer>> subsetsWithDup(int[] nums) {
         Arrays.sort(nums);

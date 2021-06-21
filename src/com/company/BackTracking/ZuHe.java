@@ -19,8 +19,9 @@ import java.util.List;
   [3,4]
 ]*/
 public class ZuHe {
-    static List<List<Integer>> result = new LinkedList<>();
+    static List<List<Integer>> result;
     public static void main(String[] args) {
+        result = new LinkedList<>();
         Zuhe(4,2);
         System.out.println(result);
     }

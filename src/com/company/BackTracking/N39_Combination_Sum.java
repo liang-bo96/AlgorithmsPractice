@@ -13,11 +13,12 @@ public class N39_Combination_Sum {
     }
 
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        result = new ArrayList<>();
         process(candidates, 0, target, new ArrayList<>());
         return result;
     }
 
-    static List<List<Integer>> result = new ArrayList<>();
+    static List<List<Integer>> result;
 
     public static void process(int[] candidate, int location, int target, List<Integer> list) {
         if (location == candidate.length) {

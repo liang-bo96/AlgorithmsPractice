@@ -24,8 +24,9 @@ vector<vector<int>> permute(vector<int>& nums);
   [3,2,1]
 ]*/
 public class PaiLie {
-    static List<int[]> result = new LinkedList<>();
+    static List<int[]> result ;
     public static void main(String[] args) {
+        result = new LinkedList<>();
         paiLie(new int[]{1,2,3});
         System.out.println(result);
     }

@@ -11,8 +11,9 @@ import java.util.List;
 [ [],[1],[2],[3],[1,3],[2,3],[1,2],[1,2,3] ]*/
 public class Ziji {
     static char[] arr;
-    static List<String> result = new ArrayList<>();
+    static List<String> result;
     public static void main(String[] args) {
+        result = new ArrayList<>();
         //求字符串的全部子集
         Ziji("abc");
         System.out.println(result);

@@ -5,6 +5,7 @@ import edu.princeton.cs.algs4.In;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 import static com.company.Leetcode.N46.swap;
@@ -13,32 +14,33 @@ public class N47_Pailie {
     public static void main(String[] args) {
         System.out.println(new N47_Pailie().permuteUnique(new int[]{1, 1, 2}));
     }
-
-    boolean[] vis;
-
     public List<List<Integer>> permuteUnique(int[] nums) {
-        List<List<Integer>> ans = new ArrayList<List<Integer>>();
-        List<Integer> perm = new ArrayList<Integer>();
-        vis = new boolean[nums.length];
-        Arrays.sort(nums);
-        backtrack(nums, ans, 0, perm);
-        return ans;
+        return permute(nums);
     }
-
-    public void backtrack(int[] nums, List<List<Integer>> ans, int idx, List<Integer> perm) {
-        if (idx == nums.length) {
-            ans.add(new ArrayList<Integer>(perm));
-            return;
-        }
-        for (int i = 0; i < nums.length; ++i) {
-            if (vis[i] || (i > 0 && nums[i] == nums[i - 1] && !vis[i - 1])) {
-                continue;
+    static List<List<Integer>> result;
+    public List<List<Integer>> permute(int[] nums) {
+        result = new ArrayList<>();
+        process(nums,0);
+        return result;
+    }
+    public static void process(int[] nums,int tem){
+        if(tem == nums.length - 1){
+            List<Integer> result1 = new ArrayList<>();
+            for (int i : nums){
+                result1.add(i);
             }
-            perm.add(nums[i]);
-            vis[i] = true;
-            backtrack(nums, ans, idx + 1, perm);
-            vis[i] = false;
-            perm.remove(idx);
+            result.add(result1);
+        }
+        HashSet<Integer> set = new HashSet<>();
+        for(int i = tem ; i < nums.length ; i++){
+            //进行剪枝
+            if(!set.contains(nums[i])){
+                set.add(nums[i]);
+                swap(nums,tem,i);
+                process(nums,tem+1);
+                swap(nums,i,tem);
+            }
+
         }
     }
 

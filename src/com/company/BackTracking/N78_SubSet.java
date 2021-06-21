@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class N78_SubSet {
-    static List<List<Integer>> result = new ArrayList<>();
+    static List<List<Integer>> result;
     public static void main(String[] args) {
         System.out.println(new N78_SubSet().subsets(new int[]{1, 2, 3}));
     }
     public List<List<Integer>> subsets(int[] nums) {
+        result = new ArrayList<>();
         process(nums,0,new ArrayList<>());
         return result;
     }
