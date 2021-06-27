@@ -1,15 +1,21 @@
 package com.company.BackTracking;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Timer;
 
 public class N322_Coin_Change {
     public static void main(String[] args) throws InterruptedException {
+        long t3 = System.currentTimeMillis();
+        System.out.println(new N322_Coin_Change().coinChange2(new int[]{3, 7, 405, 436}, 30000));
+        long t4 = System.currentTimeMillis();
+        System.out.println(t4 - t3);
         long t1 = System.currentTimeMillis();
-//        System.out.println(new N322_Coin_Change().coinChange(new int[]{3, 7, 405, 436}, 8839));
+        System.out.println(new N322_Coin_Change().coinChange(new int[]{3, 7, 405, 436}, 20000));
         long t2 = System.currentTimeMillis();
         System.out.println(t2 - t1);
+
     }
 
 
@@ -48,13 +54,32 @@ public class N322_Coin_Change {
 
     //
     public int coinChange2(int[] coins, int amount) {
-        return 0;
+        return process2(coins,amount,0,new HashMap<>());
     }
 
-    public static int process2(int[] coins,int amount){
-        return 1;
-
-
+    public static int process2(int[] coins, int amount, int index, HashMap<String,Integer> map){
+        if(map.containsKey(amount +"-"+index)){
+            return map.get(amount +"-"+index);
+        }
+        if(index == coins.length){
+            if(amount == 0){
+                map.put(amount+"-"+index,0);
+                return 0;
+            }else{
+                map.put(amount+"-"+index,999999);
+                return 999999;
+            }
+        }
+        if(amount == 0){
+            map.put(amount+"-"+index,0);
+            return 0;
+        }
+        int t2 = Integer.MAX_VALUE ;
+        for(int num = 0; num * coins[index] <= amount;num++){
+            t2 =Math.min(process2(coins, amount - num * coins[index], index + 1, map) +num,t2);
+        }
+        map.put(amount+"-"+index,t2);
+        return t2;
     }
 
 }

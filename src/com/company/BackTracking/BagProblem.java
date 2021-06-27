@@ -16,28 +16,23 @@ public class BagProblem {
             return 0;
         }
         // 尝试函数！
-        return process(w, v, 0, bag,new HashMap<>());
+        return process1(w, v, 0, bag,new HashMap<>());
     }
 
     // index 0~N
     // rest 负~bag
-    public static int process(int[] w, int[] v, int index, int rest,HashMap<String,Integer> map) {
+    public static int process1(int[] w, int[] v, int index, int rest,HashMap<String,Integer> map) {
         if(map.containsKey(index +"-"+ rest)){
             return map.get(index +"-"+ rest);
-        }
-        if (rest < 0) {
-            map.put(index +"-"+ rest,-1);
-            return -1;
         }
         if (index == w.length) {
             map.put(index +"-"+ rest,0);
             return 0;
         }
-        int p1 = process(w, v, index + 1, rest,map);
+        int p1 = process1(w, v, index + 1, rest,map);
         int p2 = 0;
-        int next = process(w, v, index + 1, rest - w[index],map);
-        if (next != -1) {
-            p2 = v[index] + next;
+        if(rest >= w[index]){
+            p2 = process1(w, v, index + 1, rest - w[index],map) + v[index];
         }
         map.put(index +"-"+ rest, Math.max(p1, p2));
         return Math.max(p1, p2);
@@ -50,26 +45,26 @@ public class BagProblem {
             return 0;
         }
         // 尝试函数！
-        return process(w, v, 0, 0, bag,new HashMap<>());
+        return process(w, v, 0,  bag,new HashMap<>());
     }
-    public static int process(int[] w, int[] v, int index, int total, int bag, HashMap<String,Integer> map){
-//        if(map.containsKey(index +"-" + bag)){
-//            return map.get(index +"-" + bag);
-//        }
-        if(bag == 0){
-//            map.put(index +"-" + bag,total);
-            return total;
+    public static int process(int[] w, int[] v, int index, int rest,HashMap<String,Integer> map){
+        if(map.containsKey(index +"-" + rest)){
+            return map.get(index +"-" + rest);
+        }
+        if(rest == 0){
+            map.put(index +"-" + rest,0);
+            return 0;
         }
         if(index == w.length){
-//            map.put(index +"-" + bag,total);
-            return total;
+            map.put(index +"-" + rest,0);
+            return 0;
         }
-        int t1 = process(w,v,index + 1,total,bag,map);
+        int t1 = process(w,v,index + 1,rest,map);
         int t2 = 0;
-        if( bag >= w[index]){
-            t2 = process(w,v,index + 1,total + v[index],bag - w[index],map);
+        if( rest >= w[index]){
+            t2 = process(w,v,index + 1,rest - w[index],map) + v[index];
         }
-//        map.put(index +"-" + bag,Math.max(t1,t2));
+        map.put(index +"-" + rest,Math.max(t1,t2));
         return Math.max(t1,t2);
     }
 
@@ -96,17 +91,17 @@ public class BagProblem {
     }
 
     public static void main(String[] args) {
-        int[] weights = { 3, 2, 4, 7, 3, 1, 7 ,4,5,6,7,8,9,1,2,3,4,4,5,6,7};
-        int[] values = { 5, 6, 3, 19, 12, 4, 2 ,6,5,4,3,2,1,8,7,6,5,4,5,6,7};
+        int[] weights = { 3, 2,4,8,3, 2,4,8,3, 2,4,8};
+        int[] values = { 5, 6,5,7,5, 6,5,7,5, 6,5,7};
         int bag = 15;
         System.out.println("test begin");
         long t1 = System.currentTimeMillis();
         for (int i = 0; i < 600; i++) {
             if(maxValue2(weights, values, i) != dp(weights, values, i)){
-                System.out.println(11);
+                System.out.println(i);
+                System.out.println(maxValue2(weights, values, i));
+                System.out.println(dp(weights, values, i));
             }
-//            System.out.println(maxValue2(weights, values, i));
-//            System.out.println(dp(weights, values, i));
         }
         long t2 = System.currentTimeMillis();
         System.out.println((t2 - t1)/1000);
