@@ -27,11 +27,7 @@ candidates 中的每个数字在每个组合中只能使用一次。
   [1,2,2],
   [5]
 ]*/
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Deque;
-import java.util.List;
+import java.util.*;
 
 public class N40_Combination_Sum {
 
@@ -87,11 +83,44 @@ public class N40_Combination_Sum {
         }
     }
 
+
+    //--------------------------------------我的版本---------------------------------------------
+    public List<List<Integer>> combinationSum3(int[] candidates, int target) {
+        int len = candidates.length;
+        List<List<Integer>> res = new ArrayList<>();
+        if (len == 0) {
+            return res;
+        }
+
+        // 关键步骤
+        Arrays.sort(candidates);
+
+        List<Integer> path = new LinkedList<Integer>() {
+        };
+        dfs3(candidates, 0,  target, path, res);
+        return res;
+    }
+    public static void dfs3(int[] candidates,int index,int target,List<Integer> path,List<List<Integer>> res){
+        if(target == 0){
+            res.add(new ArrayList<>(path));
+            return;
+        }
+        if(index == candidates.length) return;
+        for (int i = index; i < candidates.length; i++) {
+            if(candidates[i] > target) break;
+            if(i > index && candidates[i-1] == candidates[i])continue;
+            path.add(candidates[i]);
+            dfs3(candidates, i + 1, target - candidates[i], path, res);
+            path.remove(path.size() - 1);
+        }
+    }
     public static void main(String[] args) {
-        int[] candidates = new int[]{1,2,3};
+        int[] candidates = new int[]{1,1,1,1,1,1,1};
         int target = 5;
         N40_Combination_Sum solution = new N40_Combination_Sum();
         List<List<Integer>> res = solution.combinationSum2(candidates, target);
         System.out.println("输出 => " + res);
+        List<List<Integer>> res1 = solution.combinationSum3(candidates, target);
+        System.out.println("输出 => " + res1);
     }
 }
