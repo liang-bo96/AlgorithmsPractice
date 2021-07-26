@@ -3,6 +3,7 @@ package com.company.BackTracking;
 import edu.princeton.cs.algs4.In;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,28 +20,51 @@ import java.util.List;
   [3,4]
 ]*/
 public class ZuHe {
-    static List<List<Integer>> result;
+//    static List<List<Integer>> result;
+//    public static void main(String[] args) {
+//        result = new LinkedList<>();
+//        Zuhe(4,2);
+//        System.out.println(result);
+//    }
+//    public static void Zuhe(int n, int k){
+//        int[] arr = new int[n];
+//        for (int i = 0; i < n; i++) {
+//            arr[i] = i+1;
+//        }
+//        process(arr,0,k,new LinkedList<>());
+//    }
+//    public static void process(int[]arr,int tem, int k,LinkedList<Integer> list){
+//        if(list.size() == k){
+//            result.add(new LinkedList<>(list));
+//            return;
+//        }
+//        for (int i = tem; i < arr.length; i++) {
+//            list.addLast(arr[i]);
+//            process(arr,i+1,k,list);
+//            list.removeLast();
+//        }
+//    }
+
     public static void main(String[] args) {
-        result = new LinkedList<>();
-        Zuhe(4,2);
+        result = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        process(list,0,2,new ArrayList<>());
         System.out.println(result);
     }
-    public static void Zuhe(int n, int k){
-        int[] arr = new int[n];
-        for (int i = 0; i < n; i++) {
-            arr[i] = i+1;
-        }
-        process(arr,0,k,new LinkedList<>());
-    }
-    public static void process(int[]arr,int tem, int k,LinkedList<Integer> list){
-        if(list.size() == k){
-            result.add(new LinkedList<>(list));
+    static List<List<Integer>> result;
+    public static void process(List<Integer>arr,int location,int len,List<Integer> tem){
+        if(tem.size() == len){
+            result.add(tem);
             return;
         }
-        for (int i = tem; i < arr.length; i++) {
-            list.addLast(arr[i]);
-            process(arr,i+1,k,list);
-            list.removeLast();
+        for (int i = location; i < arr.size(); i++) {
+            tem.add(arr.get(i));
+            process(arr,i + 1 ,len,new ArrayList<>(tem));
+            tem.remove(tem.size() - 1);
         }
     }
 
