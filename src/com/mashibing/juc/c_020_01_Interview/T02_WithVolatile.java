@@ -13,6 +13,7 @@ package com.mashibing.juc.c_020_01_Interview;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 public class T02_WithVolatile {
@@ -37,11 +38,11 @@ public class T02_WithVolatile {
 				c.add(new Object());
 				System.out.println("add " + i);
 				
-				/*try {
+				try {
 					TimeUnit.SECONDS.sleep(1);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
-				}*/
+				}
 			}
 		}, "t1").start();
 		
@@ -51,7 +52,7 @@ public class T02_WithVolatile {
 					break;
 				}
 			}
-			System.out.println("t2 ����");
+			System.out.println("t2------------------");
 		}, "t2").start();
 	}
 }

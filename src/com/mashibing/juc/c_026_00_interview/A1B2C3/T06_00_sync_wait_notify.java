@@ -37,7 +37,7 @@ public class T06_00_sync_wait_notify {
                     }
                 }
 
-                o.notify();
+//                o.notify();
             }
         }, "t2").start();
     }

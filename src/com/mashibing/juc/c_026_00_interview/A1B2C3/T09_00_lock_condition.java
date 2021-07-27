@@ -71,7 +71,7 @@ public class T09_00_lock_condition {
                     conditionT3.await();
                 }
 
-                conditionT1.signal();
+//                conditionT1.signal();
 
             } catch (Exception e) {
                 e.printStackTrace();
