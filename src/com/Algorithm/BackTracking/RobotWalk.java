@@ -15,28 +15,85 @@ import java.util.HashMap;
 public class RobotWalk {
     public static void main(String[] args) {
         System.out.println(robotWalk(5, 2, 6, 4,new HashMap<>()));
+        System.out.println(robotMove(5, 2, 6, 4));
     }
 
-    public static int robotWalk(int N, int M, int K, int P, HashMap<String,Integer> map) {
-        if(map.containsKey(M+"-"+K)){
-            return map.get(M+"-"+K);
+    public static int robotWalk(int location, int tem_location, int left, int destination, HashMap<String,Integer> map) {
+        if(map.containsKey(tem_location+"-"+left)){
+            return map.get(tem_location+"-"+left);
         }
-        if (K == 0) {
-            map.put(M+"-"+K,M == P ? 1 : 0);
-            return M == P ? 1 : 0;
+        if (left == 0) {
+            map.put(tem_location+"-"+left,tem_location == destination ? 1 : 0);
+            return tem_location == destination ? 1 : 0;
         }
-        if (M == 1) {
-            int i = robotWalk(N, M + 1, K - 1, P,map);
-            map.put(M+"-"+K,i);
+        if (tem_location == 1) {
+            int i = robotWalk(location, tem_location + 1, left - 1, destination,map);
+            map.put(tem_location+"-"+left,i);
             return i;
         }
-        if (M == N) {
-            int i = robotWalk(N, M - 1, K - 1, P,map);
-            map.put(M+"-"+K,i);
+        if (tem_location == location) {
+            int i = robotWalk(location, tem_location - 1, left - 1, destination,map);
+            map.put(tem_location+"-"+left,i);
             return i;
         }
-        int i = robotWalk(N, M + 1, K - 1, P,map) + robotWalk(N, M - 1, K - 1, P,map);
-        map.put(M+"-"+K,i);
+        int i = robotWalk(location, tem_location + 1, left - 1, destination,map) + robotWalk(location, tem_location - 1, left - 1, destination,map);
+        map.put(tem_location+"-"+left,i);
         return i;
     }
+
+    /**
+     * lianxi
+     */
+    public static int robotMove(int location, int tem_location, int left, int destination){
+        if(left == 0){
+            return tem_location == destination ? 1:0;
+        }
+        if(tem_location == 1){
+            return robotMove(location,tem_location + 1,left - 1,destination);
+        }
+        if(tem_location == location){
+            return robotMove(location,tem_location - 1,left - 1,destination);
+        }
+        return robotMove(location,tem_location - 1,left - 1,destination) + robotMove(location,tem_location + 1,left - 1,destination);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

@@ -1,8 +1,6 @@
 package com.Algorithm.Graph;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class Code01_BFS {
 
@@ -27,12 +25,35 @@ public class Code01_BFS {
 		}
 	}
 
+	/**
+	 * 练习
+	 * @param
+	 */
+
+	public static void bfs1(Node start){
+		Queue<Node> queue = new LinkedList<>();
+		Set<Node> set = new HashSet<>();
+		queue.add(start);
+		set.add(start);
+		while(!queue.isEmpty()){
+			Node tem = queue.poll();
+			System.out.println(tem.value);
+			for(Node node : tem.nexts){
+				if(!set.contains(node)){
+					set.add(node);
+					queue.add(node);
+				}
+			}
+		}
+
+	}
+
 
 
 
 	public static void main(String[] args) {
 		Node tree = createTree();
-		bfs(tree);
+		bfs1(tree);
 	}
 
 

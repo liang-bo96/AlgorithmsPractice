@@ -90,6 +90,46 @@ public class BagProblem {
         return dp[0][bag];
     }
 
+    /**
+     * 练习1
+     */
+    static int result;
+    public static int maxValue_practice1(int[] w, int[] v, int bag){
+        process1(w,v,bag,0,0,0);
+        return result;
+    }
+
+    public static void process1(int[] w, int[] v, int bag,int totalValue,int totalWeight,int location){
+        if(location == w.length || totalWeight == bag){
+            result = Math.max(result,totalValue);
+            return;
+        }
+        process1(w,v,bag,totalValue,totalWeight,location+1);
+        if(totalWeight + w[location] <= bag){
+            process1(w,v,bag,totalValue + v[location],totalWeight + w[location],location + 1);
+        }
+    }
+
+    /**
+     *
+     * 练习2
+     */
+    public static int maxValue_practice2(int[] w, int[] v, int bag){
+        return process2(w,v,bag,0);
+    }
+
+    public static int process2(int[] w, int[] v, int bag,int location){
+        if(location == w.length || 0 == bag){
+            return 0;
+        }
+        int no = process2(w,v,bag,location+1);
+        int yes = 0;
+        if( w[location] <= bag){
+            yes = process2(w,v,bag - w[location],location + 1) + v[location];
+        }
+        return Math.max(yes,no);
+    }
+
     public static void main(String[] args) {
         int[] weights = { 3, 2,4,8,3, 2,4,8,3, 2,4,8};
         int[] values = { 5, 6,5,7,5, 6,5,7,5, 6,5,7};
@@ -97,9 +137,9 @@ public class BagProblem {
         System.out.println("test begin");
         long t1 = System.currentTimeMillis();
         for (int i = 0; i < 600; i++) {
-            if(maxValue2(weights, values, i) != dp(weights, values, i)){
+            if(maxValue_practice2(weights, values, i) != dp(weights, values, i)){
                 System.out.println(i);
-                System.out.println(maxValue2(weights, values, i));
+                System.out.println(maxValue_practice1(weights, values, i));
                 System.out.println(dp(weights, values, i));
             }
         }

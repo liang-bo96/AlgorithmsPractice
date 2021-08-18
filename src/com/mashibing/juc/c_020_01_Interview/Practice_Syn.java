@@ -1,5 +1,7 @@
 package com.mashibing.juc.c_020_01_Interview;
 
+import com.mashibing.juc.c_010.T;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +15,45 @@ import java.util.List;
  */
 public class Practice_Syn {
     public static void main(String[] args) {
+//        new Practice_Syn().Practice1();
+        new Practice_Syn().Practice2();
+    }
+
+    public void Practice2(){
+        List<Integer> list = new ArrayList<>();
+
+        new Thread(()->{
+            synchronized (this){
+                try {
+                    this.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("size = 5");
+                this.notify();
+            }
+        }).start();
+
+        new Thread(()->{
+            synchronized (this){
+                for (int i = 0; i < 10; i++) {
+                    list.add(1);
+                    System.out.println(list.size());
+                    if(list.size() == 5){
+                        this.notify();
+                        try {
+                            this.wait();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        }).start();
+
+    }
+
+    public void Practice1(){
         List<Integer> list = new ArrayList<>();
         Object lock = new Object();
 

@@ -24,24 +24,24 @@ public class T13_RobotWalk {
     static int count;
     public int movingCount(int m, int n, int k) {
         count = 0;
-        boolean[][] tem = new boolean[m][n];
-        dfs(0,0,m,n,k,tem);
+        boolean[][] visited = new boolean[m][n];
+        dfs(0,0,m,n,k,visited);
         return count;
     }
 
-    void dfs(int i, int j,int m, int n, int k,boolean[][] tem){
+    void dfs(int i, int j,int m, int n, int k,boolean[][] visited){
         if(i < 0 || j < 0 ||  i >= m || j >=n ){
             return;
         }
-        if(isBigger(i,j,k) || tem[i][j]){
+        if(isBigger(i,j,k) || visited[i][j]){
             return;
         }
-        tem[i][j] =true;
+        visited[i][j] =true;
         count ++;
-        dfs(i+1,j,m,n,k,tem);
-        dfs(i,j+1,m,n,k,tem);
-        dfs(i-1,j,m,n,k,tem);
-        dfs(i,j-1,m,n,k,tem);
+        dfs(i+1,j,m,n,k,visited);
+        dfs(i,j+1,m,n,k,visited);
+        dfs(i-1,j,m,n,k,visited);
+        dfs(i,j-1,m,n,k,visited);
     }
 
 

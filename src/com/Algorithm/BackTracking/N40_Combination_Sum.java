@@ -95,8 +95,7 @@ public class N40_Combination_Sum {
         // 关键步骤
         Arrays.sort(candidates);
 
-        List<Integer> path = new LinkedList<Integer>() {
-        };
+        List<Integer> path = new LinkedList<Integer>();
         dfs3(candidates, 0,  target, path, res);
         return res;
     }
@@ -115,7 +114,7 @@ public class N40_Combination_Sum {
         }
     }
     public static void main(String[] args) {
-        int[] candidates = new int[]{1,1,1,1,1,1,1};
+        int[] candidates = new int[]{1,1,2,3,4};
         int target = 5;
         N40_Combination_Sum solution = new N40_Combination_Sum();
         List<List<Integer>> res = solution.combinationSum2(candidates, target);

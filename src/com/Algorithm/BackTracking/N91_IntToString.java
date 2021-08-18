@@ -1,5 +1,6 @@
 package com.Algorithm.BackTracking;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
 public class N91_IntToString {
     public static void main(String[] args) {
         System.out.println(IntToString(new int[]{1, 1, 1}));
+        System.out.println(new N91_IntToString().numDecodings("226"));
     }
 
     public static int IntToString(int[] arr) {
@@ -52,4 +54,51 @@ public class N91_IntToString {
         map.put(location, re);
         return re;
     }
+
+
+    /**
+     * 练习
+     */
+
+        public int numDecodings(String s) {
+            result = new ArrayList<>();
+            process(s.toCharArray(), 0, new ArrayList<>());
+            return result.size();
+        }
+
+        static List<List<Character>> result;
+
+        public static void process(char[] arr, int location, List<Character> tem) {
+            if (location == arr.length) {
+                result.add(new ArrayList<>(tem));
+                return;
+            }
+            if(arr[location] == '0'){
+                return;
+            }
+
+            tem.add((char) ('A' + Integer.parseInt(String.valueOf(arr[location])) - 1));
+            process(arr, location + 1, tem);
+            tem.remove(tem.size() - 1);
+
+            if (arr[location] == '1') {
+                if (location + 1 < arr.length) {
+                    tem.add((char) ('K' + Integer.parseInt(String.valueOf(arr[location + 1])) - 1));
+                    process(arr, location + 2, tem);
+                    tem.remove(tem.size() - 1);
+                }
+            }
+            if (arr[location] == '2') {
+                if (location + 1 < arr.length && arr[location + 1] < '7') {
+                    tem.add((char) ('U' + Integer.parseInt(String.valueOf(arr[location + 1])) - 1));
+                    process(arr, location + 2, tem);
+                    tem.remove(tem.size() - 1);
+                }
+            }
+
+
+
+        }
+
+
 }

@@ -7,9 +7,7 @@
  * 
  * @author 马士兵
  */
-package com.mashibing.juc.c_023;
-
-import java.util.Arrays;
+package com.mashibing.juc.c_023_Singleton;
 
 public class Singleton {
 	

@@ -1,5 +1,6 @@
 package com.Algorithm.BackTracking;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
@@ -27,11 +28,12 @@ import java.util.Stack;
 s 仅由小写英文字母组成*/
 public class N131_PalindromePartitioning {
     public static void main(String[] args) {
-        System.out.println(new N131_PalindromePartitioning().partition("abc"));
+        System.out.println(new N131_PalindromePartitioning().partition("aabccbaa").size());
+        System.out.println("Asd".substring(0,1));
     }
     public List<List<String>> partition(String s) {
         result = new LinkedList<>();
-        process(s,0,new LinkedList<>());
+        process1(s,0,new LinkedList<>());
         List<List<String>> r = new LinkedList<>();
         for(List<String> list : result){
             if(judge(list)){
@@ -75,4 +77,22 @@ public class N131_PalindromePartitioning {
         }
         return true;
     }
+
+    /**
+     * 练习 字符串分割 每次增加字串长度为1-最长
+     */
+
+    public static void process1(String s, int location, List<String> list){
+        if(location == s.length()){
+            result.add(new ArrayList<>(list));
+            return;
+        }
+        for (int i = location; i < s.length(); i++) {
+            list.add(s.substring(location,i + 1));
+            process1(s,i + 1,list);
+            list.remove(list.size() - 1);
+        }
+    }
+
+
 }

@@ -22,7 +22,9 @@ public class T05_VolatileVsSync {
 		List<Thread> threads = new ArrayList<Thread>();
 
 		for (int i = 0; i < 10; i++) {
-			threads.add(new Thread(t::m, "thread-" + i));
+			threads.add(new Thread(()->{
+				t.m();
+			}));
 		}
 
 		threads.forEach((o) -> o.start());

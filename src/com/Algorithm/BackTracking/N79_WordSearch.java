@@ -1,5 +1,8 @@
 package com.Algorithm.BackTracking;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /*79. 单词搜索
 给定一个 m x n 二维字符网格 board 和一个字符串单词 word 。如果 word 存在于网格中，返回 true ；否则，返回 false 。
 
@@ -25,7 +28,8 @@ public class N79_WordSearch {
                 {'A', 'D', 'E', 'E'}};
         System.out.println(new N79_WordSearch().exist(chars, "ABCESEEEFS"));
     }
-//-----------------------------------超时---------------------------------------------------
+
+    //-----------------------------------超时---------------------------------------------------
     public boolean exist(char[][] board, String word) {
         int length = board.length;
         int width = board[0].length;
@@ -53,7 +57,7 @@ public class N79_WordSearch {
             return false;
         }
         visited[x][y] = true;
-        boolean t =  dfs(board, x + 1, y, index + 1, word, visited) ||
+        boolean t = dfs(board, x + 1, y, index + 1, word, visited) ||
                 dfs(board, x - 1, y, index + 1, word, visited) ||
                 dfs(board, x, y + 1, index + 1, word, visited) ||
                 dfs(board, x, y - 1, index + 1, word, visited);
@@ -61,4 +65,6 @@ public class N79_WordSearch {
         visited[x][y] = false;
         return t;
     }
+
+
 }
