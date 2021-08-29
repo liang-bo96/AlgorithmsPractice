@@ -1,36 +1,18 @@
 package com.Algorithm.DoublePointer;
 
 
+import com.Algorithm.BFS.TreeNode;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode() {
-    }
-
-    TreeNode(int val) {
-        this.val = val;
-    }
-
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
-    }
-}
 
 
 public class N653 {
     public static void main(String[] args) {
 
     }
-
-
 
     //reference
     public boolean findTarget1(TreeNode root, int k) {

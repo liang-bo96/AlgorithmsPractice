@@ -1,5 +1,7 @@
 package com.Algorithm.DoublePointer;
 
+import java.util.Arrays;
+
 /*
 * 75. 颜色分类
 给定一个包含红色、白色和蓝色，一共 n 个元素的数组，原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。
@@ -31,21 +33,26 @@ nums[i] 为 0、1 或 2
 * */
 public class N75_sort_color {
     public static void main(String[] args) {
-        new N75_sort_color().sortColors(new int[]{2,0,1});
+        int[] tem = new int[]{2,0,1};
+        new N75_sort_color().sortColors(tem);
+        System.out.println(Arrays.toString(tem));
     }
     public void sortColors(int[] nums) {
         if(nums.length == 1) return;
         int left = 0;
         int right = nums.length - 1;
 
-        for (int i = 0; i < nums.length ; i++){
-            while(nums[i] == 2 && right >=i){
-                swap(nums,i,right);
-                right--;
-            }
+        for (int i = 0; i <= right ; i++){
             if(nums[i] == 0){
                 swap(nums,i,left);
                 left++;
+            }
+            if(nums[i] == 2){
+                swap(nums,i,right);
+                right--;
+                if(nums[i] != 1){
+                    i--;
+                }
             }
         }
     }

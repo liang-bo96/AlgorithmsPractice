@@ -22,7 +22,7 @@ package com.Algorithm.DFS;
 输出: true*/
 public class T33_verifyPostorder {
     public static void main(String[] args) {
-        System.out.println(new T33_verifyPostorder().verifyPostorder(new int[]{4, 8, 6, 12, 16, 14, 10}));
+        System.out.println(new T33_verifyPostorder().verifyPostorder1(new int[]{1,2,5,10,6,9,4,3}));
     }
     //数组内部排列方式为【左子树|右子树|根】
     // 先判断左子树是否都小于根，
@@ -43,4 +43,32 @@ public class T33_verifyPostorder {
         }
         return start == end && help(posOrder,first_start,mid - 1) && help(posOrder,mid,end - 1);
     }
+
+
+    /**
+     * 练习
+     * @param postorder
+     * @return
+     */
+    public boolean verifyPostorder1(int[] postorder) {
+        return process(postorder,0,postorder.length - 1);
+    }
+
+    public static boolean process(int[]arr,int start,int end){
+        if(start >= end) return true;
+        int tem = arr[end];
+        int pointer = end;
+        while(pointer >= start && arr[pointer] >= tem){
+                pointer--;
+        }
+        int left = pointer;
+        while(left >= start){
+            if(arr[left] >= tem){
+                return false;
+            }
+            left--;
+        }
+        return process(arr,start,pointer) && process(arr,pointer + 1,end -1);
+    }
+
 }

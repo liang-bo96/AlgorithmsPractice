@@ -18,6 +18,8 @@ package com.Algorithm.DoublePointer;
 public class N26_removeDuplicates {
     public static void main(String[] args) {
         System.out.println(removeDuplicates(new int[]{1, 1, 2}));
+        System.out.println(removeDuplicates1(new int[]{0,0,1,1,1,2,2,3,3,4}));
+
     }
     public static int removeDuplicates(int[] nums) {
         if(nums.length < 2) return nums.length;
@@ -32,6 +34,26 @@ public class N26_removeDuplicates {
                 nums[left] = nums[right];
                 right++;
             }
+        }
+        return left +1;
+    }
+
+
+    public static int removeDuplicates1(int[] nums) {
+        if(nums == null || nums.length == 0){
+            return 0;
+        }
+        if(nums.length == 1){
+            return 1;
+        }
+        int left = 0;
+        int right = 1;
+        while(right < nums.length){
+            if(nums[left] != nums[right]){
+                left++;
+                nums[left] = nums[right];
+            }
+            right++;
         }
         return left +1;
     }

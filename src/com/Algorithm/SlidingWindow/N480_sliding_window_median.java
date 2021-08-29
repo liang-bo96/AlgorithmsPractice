@@ -1,10 +1,10 @@
-package com.Algorithm.DoubleHeap;
+package com.Algorithm.SlidingWindow;
 
 import java.util.*;
 
 public class N480_sliding_window_median {
     public static void main(String[] args) {
-        System.out.println(new N480_sliding_window_median().medianSlidingWindow(new int[]{1,2,3,4}, 4));
+        System.out.println(Arrays.toString(new N480_sliding_window_median().medianSlidingWindow(new int[]{1, 2, 3, 4}, 4)));
     }
     public double[] medianSlidingWindow(int[] nums, int k) {
         if(nums == null || k > nums.length) return null;

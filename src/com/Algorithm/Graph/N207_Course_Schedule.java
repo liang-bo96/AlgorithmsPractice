@@ -1,6 +1,9 @@
 package com.Algorithm.Graph;
 
 import java.util.*;
+
+import static com.Algorithm.Graph.GraphGenerator.createGraph;
+
 /*207. 课程表
 你这个学期必须选修 numCourses 门课程，记为 0 到 numCourses - 1 。
 
@@ -32,7 +35,8 @@ prerequisites[i].length == 2
 prerequisites[i] 中的所有课程对 互不相同*/
 public class N207_Course_Schedule {
     public static void main(String[] args) {
-        System.out.println(new N207_Course_Schedule().canFinish(2, new int[][]{{0, 1}}));
+        System.out.println(new N207_Course_Schedule().canFinish1(2, new int[][]{{0, 1}}));
+        System.out.println(new N207_Course_Schedule().canFinish1(5, new int[][]{{1,4},{2,4},{3,1},{3,2}}));
     }
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         List<List<Integer>> list = new LinkedList<>();
@@ -64,5 +68,41 @@ public class N207_Course_Schedule {
             }
         }
         return result.size() == numCourses;
+    }
+
+    /**
+     * 练习---------------直接建立图
+     * @param numCourses
+     * @param prerequisites
+     * @return
+     */
+    public boolean canFinish1(int numCourses, int[][] prerequisites) {
+        if(prerequisites.length == 0) return true;
+        Graph g =  createGraph(prerequisites);
+        Queue<Node> queue = new LinkedList<>();
+        for(int i : g.nodes.keySet()){
+            Node node = g.nodes.get(i);
+            if(node.in == 0){
+                queue.add(node);
+            }
+        }
+        Set<Integer> set = new HashSet<>();
+        for(int[] t: prerequisites){
+            for(int j : t){
+                set.add(j);
+            }
+        }
+        int size = numCourses - set.size();
+        while(!queue.isEmpty()){
+            Node poll = queue.poll();
+            size++;
+            for(Node node : poll.nexts){
+                node.in--;
+                if(node.in == 0){
+                    queue.add(node);
+                }
+            }
+        }
+        return size == numCourses;
     }
 }

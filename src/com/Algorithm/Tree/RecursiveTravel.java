@@ -213,18 +213,13 @@ public class RecursiveTravel extends SelectionSort {
     }
 
 
-    public TreeNode createTree(){
+    public static TreeNode createTree(){
 
-//        A.setLeft(B);
-//        A.setRight(C);
-//        B.setLeft(D);
-//        B.setRight(F);
-//        F.setLeft(E);
-//        C.setLeft(G);
-//        C.setRight(I);
-//        G.setRight(H);
-
-
+//        /**
+//         *                         e5
+//                          c3            g7
+//                        a1       d4    f6     i9
+//                           b2                h8
         E.setLeft(C);
         E.setRight(G);
         C.setLeft(A);
@@ -233,7 +228,35 @@ public class RecursiveTravel extends SelectionSort {
         G.setRight(I);
         I.setLeft(H);
         A.setRight(B);
+        A.val = 1;
+        B.val = 2;
+        C.val = 3;
+        D.val = 4;
+        E.val = 5;
+        F.val = 6;
+        G.val = 7;
+        H.val = 8;
+        I.val = 9;
+
         return E;
     }
-}
+    public static TreeNode createTree1(){
+        TreeNode A = new TreeNode(1);
+        TreeNode B = new TreeNode(2);
+        TreeNode C = new TreeNode(3);
+        TreeNode D = new TreeNode(4);
+        TreeNode E = new TreeNode(5);
+        TreeNode F = new TreeNode(6);
+        TreeNode G = new TreeNode(7);
+
+        A.setLeft(B);
+        A.setRight(C);
+        B.setLeft(D);
+        B.setRight(E);
+        C.setLeft(F);
+        C.setRight(G);
+        return A;
+
+    }
+    }
 
