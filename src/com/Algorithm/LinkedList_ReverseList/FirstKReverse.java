@@ -56,6 +56,7 @@ public class FirstKReverse {
         return result.next;
 
     }
+    //前n个节点反转
     public static ListNode firstKReverse1(ListNode head, int n) {
         if (head == null || head.next == null) {
             return null;

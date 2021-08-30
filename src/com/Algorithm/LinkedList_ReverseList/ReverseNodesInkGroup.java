@@ -43,11 +43,12 @@ k 是一个正整数，它的值小于或等于链表的长度。
 public class ReverseNodesInkGroup {
     public static void main(String[] args) {
         ListNode head = generateListNode();
-        ListNode newHead = ReverseKListNode(head, 2);
-        while (newHead != null) {
-            System.out.println(newHead);
-            newHead = newHead.next;
-        }
+//        System.out.println(ReverseKListNode(head, 2));
+        System.out.println(reverseKGroup1(head, 2));
+//        while (newHead != null) {
+//            System.out.println(newHead);
+//            newHead = newHead.next;
+//        }
     }
 
     public static ListNode reverseKGroup(ListNode head, int k) {
@@ -92,7 +93,7 @@ public class ReverseNodesInkGroup {
     }
 
     //栈来实现反转
-    public ListNode reverseKGroup1(ListNode head, int k) {
+    public static ListNode reverseKGroup1(ListNode head, int k) {
         Stack<ListNode> stack = new Stack<>();
         int len = 0;
         ListNode tem = head;
@@ -101,8 +102,20 @@ public class ReverseNodesInkGroup {
             tem = tem.next;
         }
         int count_time = len / k;
+        ListNode dump = new ListNode(-1);
+        ListNode result = dump;
         for (int i = 0; i < count_time; i++) {
-
+            for (int j = 0; j < k; j++) {
+                stack.push(head);
+                head = head.next;
+            }
+            for (int j = 0; j < k; j++) {
+                ListNode pop = stack.pop();
+                dump.next = pop;
+                dump = dump.next;
+            }
         }
+        dump.next = head;
+        return result.next;
     }
 }

@@ -37,7 +37,7 @@ public class PreArray {
         }
         return count;
     }
-
+    //https://leetcode-cn.com/problems/subarray-sum-equals-k/solution/he-wei-kde-zi-shu-zu-by-leetcode-solution/
     public int subarraySum2(int[] nums, int k) {
         int count = 0,pre = 0;
         HashMap<Integer,Integer> map = new HashMap<>();

@@ -1,7 +1,6 @@
 package com.Algorithm.MyComparator;
 
-import java.util.Arrays;
-import java.util.Comparator;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,10 +17,25 @@ public class Main {
             public int compare(Student o1, Student o2) {
                 return Integer.parseInt(o1.age) == Integer.parseInt(o2.age) ?
                         Integer.parseInt(o1.Num) - Integer.parseInt(o2.Num):
+                        Integer.parseInt(o2.age) - Integer.parseInt(o1.age);
+            }
+        });
+        System.out.println(Arrays.toString(s));
+        Queue<Student> queue = new PriorityQueue<>(new Comparator<Student>() {
+            @Override
+            public int compare(Student o1, Student o2) {
+                return Integer.parseInt(o1.age) == Integer.parseInt(o2.age) ?
+                        Integer.parseInt(o2.Num) - Integer.parseInt(o1.Num):
                         Integer.parseInt(o1.age) - Integer.parseInt(o2.age);
             }
         });
-        System.out.println(s);
+        queue.add(s1);
+        queue.add(s2);
+        queue.add(s3);
+        System.out.println(queue.poll());
+        System.out.println(queue.poll());
+        System.out.println(queue.poll());
+
     }
     public static class Student{
         String age;
