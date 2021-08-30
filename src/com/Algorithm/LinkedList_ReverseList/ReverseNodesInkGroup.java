@@ -1,8 +1,11 @@
-package com.Algorithm.ReverseList;
+package com.Algorithm.LinkedList_ReverseList;
 
 import com.Algorithm.LinkedList.ListNode;
 
-import static com.Algorithm.ReverseList.Basic.generateListNode;
+import java.util.Stack;
+
+import static com.Algorithm.LinkedList_ReverseList.Basic.generateListNode;
+
 /*
 *25. K 个一组翻转链表
 给你一个链表，每 k 个节点一组进行翻转，请你返回翻转后的链表。
@@ -41,28 +44,30 @@ public class ReverseNodesInkGroup {
     public static void main(String[] args) {
         ListNode head = generateListNode();
         ListNode newHead = ReverseKListNode(head, 2);
-        while(newHead != null){
+        while (newHead != null) {
             System.out.println(newHead);
             newHead = newHead.next;
         }
     }
+
     public static ListNode reverseKGroup(ListNode head, int k) {
         ListNode pre = head;
         ListNode pos = head;
         for (int i = 0; i < k; i++) {
-            if(pos == null){
+            if (pos == null) {
                 return pre;
             }
             pos = pos.next;
         }
         ListNode newHead = RrverseAtoB(pre, pos);
-        pre.next = reverseKGroup(pos,k);
+        pre.next = reverseKGroup(pos, k);
         return newHead;
     }
-    public static ListNode RrverseAtoB(ListNode a, ListNode b){
+
+    public static ListNode RrverseAtoB(ListNode a, ListNode b) {
         ListNode pre = null;
         ListNode cur = a;
-        while(cur != b){
+        while (cur != b) {
             ListNode next = cur.next;
             cur.next = pre;
             pre = cur;
@@ -70,18 +75,34 @@ public class ReverseNodesInkGroup {
         }
         return pre;
     }
+
     //练习
-    public static ListNode ReverseKListNode(ListNode head,int k){
+    public static ListNode ReverseKListNode(ListNode head, int k) {
         ListNode start = head;
         ListNode end = head;
         for (int i = 0; i < k; i++) {
-            if(end == null){
+            if (end == null) {
                 return start;
             }
             end = end.next;
         }
         ListNode newHead = RrverseAtoB(start, end);
-        start.next = ReverseKListNode(end,k);
+        start.next = ReverseKListNode(end, k);
         return newHead;
+    }
+
+    //栈来实现反转
+    public ListNode reverseKGroup1(ListNode head, int k) {
+        Stack<ListNode> stack = new Stack<>();
+        int len = 0;
+        ListNode tem = head;
+        while(tem != null){
+            len++;
+            tem = tem.next;
+        }
+        int count_time = len / k;
+        for (int i = 0; i < count_time; i++) {
+
+        }
     }
 }

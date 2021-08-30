@@ -1,4 +1,4 @@
-package com.Algorithm.FastSlowPointer;
+package com.Algorithm.LinkedList_FastSlowPointer;
 
 import com.Algorithm.LinkedList.ListNode;
 
@@ -24,7 +24,12 @@ import com.Algorithm.LinkedList.ListNode;
 0 <= k <= 2 * 109*/
 public class N61_RotateList {
     public static void main(String[] args) {
-
+        ListNode a = new ListNode(1);
+        ListNode b = new ListNode(2);
+        ListNode c = new ListNode(3);
+        a.next = b;
+        b.next = c;
+        System.out.println(new N61_RotateList().rotateRight(a, 1));
     }
     public ListNode rotateRight(ListNode head, int k) {
         if(head == null || head.next == null || k == 0) return head;

@@ -2,7 +2,7 @@ package com.Algorithm.LinkedList;
 
 import java.util.List;
 
-public class N12_merge_two_list {
+public class N21_merge_two_list {
     public static void main(String[] args) {
 
     }

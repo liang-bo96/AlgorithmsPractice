@@ -1,4 +1,4 @@
-package com.Algorithm.ReverseList;
+package com.Algorithm.LinkedList_ReverseList;
 
 import com.Algorithm.LinkedList.ListNode;
 
@@ -56,7 +56,7 @@ public class Basic {
          }
          return first;
     }
-    public static ListNode reverseList1(ListNode head) {
+        public static ListNode reverseList1(ListNode head) {
         //递归解法
         if(head == null || head.next == null) return head;
         if(head.next == null) return head;

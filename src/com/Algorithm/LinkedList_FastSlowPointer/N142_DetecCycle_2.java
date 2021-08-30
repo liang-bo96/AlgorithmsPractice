@@ -1,4 +1,4 @@
-package com.Algorithm.FastSlowPointer;
+package com.Algorithm.LinkedList_FastSlowPointer;
 
 import com.Algorithm.LinkedList.ListNode;
 //找出有环链表的如环节点
