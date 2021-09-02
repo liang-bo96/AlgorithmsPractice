@@ -30,7 +30,7 @@ import java.util.HashSet;
 public class N3 {
     public static void main(String[] args) {
         System.out.println(get("tmmzuxt"));
-        System.out.println(get2("tmmzuxt"));
+        System.out.println(lengthOfLongestSubstring("tmmzuxt"));
     }
     public static int get(String s){
         if(s.length() == 0) return 0;
@@ -73,7 +73,23 @@ public class N3 {
             right++;
         }
         return len;
-
-
+    }
+    //练习
+    public static int lengthOfLongestSubstring(String s) {
+        char[] array = s.toCharArray();
+        HashMap<Character,Integer> map = new HashMap<>();
+        int left = 0;
+        int right = 0;
+        int result = 0;
+        while(right < array.length){
+            map.put(array[right],map.getOrDefault(array[right],0) + 1);
+            while(map.get(array[right]) > 1){
+                map.put(array[left],map.get(array[left]) - 1);
+                left++;
+            }
+            right++;
+            result = Math.max(result,right - left);
+        }
+        return result;
     }
 }

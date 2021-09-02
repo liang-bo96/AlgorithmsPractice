@@ -95,7 +95,7 @@ public class Code02_AllLessNumSubArray {
 		int maxLen = 100;
 		int maxValue = 200;
 		int testTime = 100000;
-		System.out.println("测试开始");
+		System.out.println("Test begin");
 		for (int i = 0; i < testTime; i++) {
 			int[] arr = generateRandomArray(maxLen, maxValue);
 			int sum = (int) (Math.random() * (maxValue + 1));
@@ -110,7 +110,7 @@ public class Code02_AllLessNumSubArray {
 				break;
 			}
 		}
-		System.out.println("测试结束");
+		System.out.println("Test end");
 
 	}
 
