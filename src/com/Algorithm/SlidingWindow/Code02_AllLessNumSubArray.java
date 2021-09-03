@@ -71,6 +71,15 @@ public class Code02_AllLessNumSubArray {
 		return count;
 	}
 
+	//for practice
+	//最大值减去最小值小于num的子数组数量
+//	public static int cal(int[]arr,int num){
+//		if(arr == null || arr.length == 0 || num < 0){
+//			return -1;
+//		}
+//
+//	}
+
 	// for test
 	public static int[] generateRandomArray(int maxLen, int maxValue) {
 		int len = (int) (Math.random() * (maxLen + 1));

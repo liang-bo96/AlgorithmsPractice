@@ -40,7 +40,9 @@ s: "abab" p: "ab"
 public class N438 {
     public static void main(String[] args) {
         System.out.println(new N438().findAnagrams("baa", "aa"));
+        System.out.println(new N438().findAnagrams1("baa", "aa"));
     }
+
     public List<Integer> findAnagrams(String s, String p) {
         List<Integer> result = new ArrayList<>();
         if(s == null || s.length() == 0 || p == null || p.length() == 0 || p.length() > s.length()){
@@ -50,9 +52,6 @@ public class N438 {
         HashMap<Character,Integer> ref = new HashMap<>();
         HashMap<Character,Integer> window = new HashMap<>();
         for(char tem : p.toCharArray()){
-            ref.put(tem,ref.getOrDefault(tem,0) + 1);
-        }
-        for(char tem : ref.keySet()){
             ref.put(tem,ref.getOrDefault(tem,0) + 1);
         }
         int left = 0,right = 0,valid = 0;
@@ -76,6 +75,42 @@ public class N438 {
                     }
                     window.put(d,window.get(d) - 1);
                 }
+            }
+            right++;
+        }
+        return result;
+    }
+
+    // for practice
+    public List<Integer> findAnagrams1(String s, String p) {
+        List<Integer> result = new ArrayList<>();
+        if (s == null || s.length() == 0 || p == null || p.length() == 0 || p.length() > s.length()) {
+            return result;
+        }
+        char[] arr = s.toCharArray();
+        char[] ref = p.toCharArray();
+        HashMap<Character,Integer> arr_map = new HashMap<>();
+        HashMap<Character,Integer> ref_map = new HashMap<>();
+        for(char c: ref){
+            ref_map.put(c,ref_map.getOrDefault(c,0) + 1);
+        }
+        int left = 0;
+        int right = 0;
+        int valid = 0;
+        while(right < arr.length){
+            arr_map.put(arr[right],arr_map.getOrDefault(arr[right],0) + 1);
+            if(arr_map.get(arr[right]).equals(ref_map.get(arr[right]))){
+                valid++;
+            }
+            while(valid == ref_map.size()){
+                if(right - left + 1 == ref.length){
+                    result.add(left);
+                }
+                if(arr_map.get(arr[left]).equals(ref_map.get(arr[left]))){
+                    valid--;
+                }
+                arr_map.put(arr[left],arr_map.get(arr[left]) - 1);
+                left++;
             }
             right++;
         }

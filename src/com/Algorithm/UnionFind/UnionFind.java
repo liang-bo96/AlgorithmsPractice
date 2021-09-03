@@ -5,13 +5,7 @@ import java.util.List;
 import java.util.Stack;
 
 
-class Node<V> {
-    V value;
 
-    public Node(V v) {
-        value = v;
-    }
-}
 
 public class UnionFind<V> {
     public HashMap<V, Node<V>> nodes;
@@ -19,6 +13,17 @@ public class UnionFind<V> {
     public HashMap<Node<V>, Integer> sizeMap;
 
     public UnionFind(List<V> values) {
+        nodes = new HashMap<>();
+        parents = new HashMap<>();
+        sizeMap = new HashMap<>();
+        for (V cur : values) {
+            Node<V> node = new Node<>(cur);
+            nodes.put(cur, node);
+            parents.put(node, node);
+            sizeMap.put(node, 1);
+        }
+    }
+    public UnionFind(V [] values) {
         nodes = new HashMap<>();
         parents = new HashMap<>();
         sizeMap = new HashMap<>();
@@ -48,8 +53,13 @@ public class UnionFind<V> {
     }
 
     public void union(V a, V b) {
-        Node<V> aHead = findFather(nodes.get(a));
-        Node<V> bHead = findFather(nodes.get(b));
+        Node<V> node_a = nodes.get(a);
+        Node<V> node_b = nodes.get(b);
+        if(node_a == null || node_b == null){
+            return;
+        }
+        Node<V> aHead = findFather(node_a);
+        Node<V> bHead = findFather(node_b);
         if (aHead != bHead) {
             int aSetSize = sizeMap.get(aHead);
             int bSetSize = sizeMap.get(bHead);
@@ -63,6 +73,13 @@ public class UnionFind<V> {
 
     public int sets() {
         return sizeMap.size();
+    }
+    class Node<V> {
+        V value;
+
+        public Node(V v) {
+            value = v;
+        }
     }
 
 }
