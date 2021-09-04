@@ -1,13 +1,15 @@
 package com.Algorithm.AAA;
 
+import java.util.Arrays;
+
 public class Merge {
 
     public static void main(String[] args) {
-        int[] a = new int[]{-1,2,0};
+        int[] a = new int[]{-1,2,0,6,7,4,3,2,6,3,4,5,2,11,324,235,34,563,53,5,345,3,453,24323};
         int[] tem = new int[a.length];
 //        mergeSort(a,0,a.length-1,tem);
         sort(a,0,a.length-1,tem);
-        System.out.println(a);
+        System.out.println(Arrays.toString(a));
         System.out.println(1);
     }
     public static void sort(int[] nums , int left ,int right,int[] tem){

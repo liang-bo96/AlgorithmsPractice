@@ -1,8 +1,6 @@
 package com.Algorithm.UnionFind;
 
-import com.Algorithm.Graph.Edge;
-import com.Algorithm.Graph.Graph;
-import com.Algorithm.Graph.Node;
+
 
 public class GraphGenerator {
 
@@ -13,23 +11,26 @@ public class GraphGenerator {
 	// [ 5 , 0 , 7]
 	// [ 3 , 0,  1]
 	// 
-	public static com.Algorithm.Graph.Graph createGraph(int[][] matrix) {
-		com.Algorithm.Graph.Graph graph = new Graph();
+	public static <V> Graph<V> createGraph(V[][] matrix,double[] weights,double[] verse) {
+		Graph<V> graph = new Graph<>();
 		for (int i = 0; i < matrix.length; i++) {
 			 // 拿到每一条边， matrix[i] 
-			int weight = matrix[i][0];
-			int from = matrix[i][1];
-			int to = matrix[i][2];
+			double weight = weights[i];
+			double vers = verse[i];
+			V from = matrix[i][0];
+			V to = matrix[i][1];
 			if (!graph.nodes.containsKey(from)) {
-				graph.nodes.put(from, new com.Algorithm.Graph.Node(from));
+				graph.nodes.put(from, new Node<>(from));
 			}
 			if (!graph.nodes.containsKey(to)) {
-				graph.nodes.put(to, new com.Algorithm.Graph.Node(to));
+				graph.nodes.put(to, new Node<>(to));
 			}
-			com.Algorithm.Graph.Node fromNode = graph.nodes.get(from);
-			Node toNode = graph.nodes.get(to);
-			com.Algorithm.Graph.Edge newEdge = new Edge(weight, fromNode, toNode);
+			Node<V> fromNode =  graph.nodes.get(from);
+			Node<V> toNode = graph.nodes.get(to);
+			Edge<V> newEdge = new Edge<V>(weight, fromNode, toNode);
+			Edge<V> verEdge = new Edge<V>(vers, toNode, fromNode);
 			fromNode.nexts.add(toNode);
+			toNode.nexts.add(fromNode);
 			fromNode.out++;
 			toNode.in++;
 			fromNode.edges.add(newEdge);
