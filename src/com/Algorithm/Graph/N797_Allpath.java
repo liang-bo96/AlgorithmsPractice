@@ -28,6 +28,7 @@ public class N797_Allpath {
             result.add(new ArrayList<>(route));
             return;
         }
+        set.add(from);
         for (Node node : from.nexts) {
             if (!set.contains(node)) {
                 route.add(node.value);

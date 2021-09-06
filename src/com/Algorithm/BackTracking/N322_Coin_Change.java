@@ -7,11 +7,11 @@ import java.util.List;
 public class N322_Coin_Change {
     public static void main(String[] args) throws InterruptedException {
         long t3 = System.currentTimeMillis();
-        System.out.println(new N322_Coin_Change().coinChange2(new int[]{3, 7, 405, 436}, 30000));
+        System.out.println(new N322_Coin_Change().coinChange2(new int[]{3, 7, 405, 436}, 300));
         long t4 = System.currentTimeMillis();
         System.out.println(t4 - t3);
         long t1 = System.currentTimeMillis();
-        System.out.println(new N322_Coin_Change().coinChange(new int[]{3, 7, 405, 436}, 20000));
+        System.out.println(new N322_Coin_Change().coinChange(new int[]{3, 7, 405, 436}, 300));
         long t2 = System.currentTimeMillis();
         System.out.println(t2 - t1);
 
