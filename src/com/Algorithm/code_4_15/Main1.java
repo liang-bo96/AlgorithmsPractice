@@ -39,7 +39,7 @@ public class Main1 {
 
         int num;
         try {
-            num = Integer.parseInt(n);
+            num = Integer.parseInt(n.split(" ")[0]);
         } catch (NumberFormatException e) {
             return "N";
         }
