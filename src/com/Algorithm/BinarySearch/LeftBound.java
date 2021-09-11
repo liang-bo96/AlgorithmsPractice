@@ -2,25 +2,44 @@ package com.Algorithm.BinarySearch;
 
 public class LeftBound {
     public static void main(String[] args) {
-        System.out.println(binarysearch(new int[]{1, 2, 2,2,2,2,2,2, 25}, 2));
+        System.out.println(leftSearch(new int[]{1, 2, 2,2,2,2,2,2, 25}, 2));
+        System.out.println(rightSearch(new int[]{1, 2, 2,2,2,2,2,2, 25}, 2));
+
     }
-    public static int binarysearch(int[] s,int target){
+    public static int leftSearch(int[]arr,int target){
         int left = 0;
-        int right = s.length - 1;//length - 1
-        while(left <= right){//等于
-            int mid = left + (right - left) / 2;
-            if(target > s[mid]){
-                left = mid +1;
-            }else if(target < s[mid]){
+        int right = arr.length - 1;
+        while(left <= right){
+            int mid = (left + right) /2;
+            if(arr[mid] == target){
                 right = mid - 1;
-            }else if(target == s[mid]){
-                right = mid - 1;//右侧减一
+            }else if(arr[mid] > target){
+                right = mid - 1;
+            }else if(arr[mid] < target) {
+                left = mid + 1;
             }
         }
-        //检查越界
-        if(left >= s.length || s[left] != target){
-            return  -1;
+        if(left >= arr.length || arr[left] != target){
+            return -1;
         }
-        return left;//返回左边界
+        return left;
+    }
+    public static int rightSearch(int[]arr,int target){
+        int left = 0;
+        int right = arr.length - 1;
+        while(left <= right){
+            int mid = (left + right) /2;
+            if(arr[mid] == target){
+                left = mid + 1;
+            }else if(arr[mid] > target){
+                right = mid - 1;
+            }else if(arr[mid] < target){
+                left = mid + 1;
+            }
+        }
+        if(right < 0 || arr[right] != target){
+            return -1;
+        }
+        return right;
     }
 }
