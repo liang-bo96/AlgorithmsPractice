@@ -93,7 +93,7 @@ public class QuickSort {
             nums[x+left] = tem[x];
         }
     }
-    private static void QuickSort(int[] num, int left, int right) {
+    public static void QuickSort(int[] num, int left, int right) {
         //如果left等于right，即数组只有一个元素，直接返回
         if (left >= right) {
             return;

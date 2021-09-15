@@ -30,10 +30,10 @@ public class N354 {
         Arrays.sort(envelopes, new Comparator<int[]>() {
             @Override
             public int compare(int[] o1, int[] o2) {
-                return o1[0] == o2[0] ? o1[1] - o2[1] : o1[0] - o2[0];
+                return o1[0] == o2[0] ? o2[1] - o1[1] : o1[0] - o2[0];
             }
         });
-        int count = 0;
+        int count = 1;
         int[] dp = new int[envelopes.length];
         for (int i = 0; i < envelopes.length; i++) {
             dp[i] = 1;
