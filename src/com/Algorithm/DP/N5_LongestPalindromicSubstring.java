@@ -30,7 +30,7 @@ package com.Algorithm.DP;
 
 1 <= s.length <= 1000
 s 仅由数字和英文字母（大写和/或小写）组成*/
-public class LongestPalindromicSubstring {
+public class N5_LongestPalindromicSubstring {
     public static void main(String[] args) {
         String s = "asdasdsasdasdasdasd";
         System.out.println(longestPalindrome(s));

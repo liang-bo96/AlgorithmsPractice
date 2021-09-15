@@ -1,4 +1,4 @@
-package com.Algorithm.KMerge;
+package com.Algorithm.LinkedList_KMerge;
 
 import java.util.*;
 
