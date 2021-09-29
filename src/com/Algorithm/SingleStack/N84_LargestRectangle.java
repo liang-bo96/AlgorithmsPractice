@@ -54,7 +54,7 @@ public class N84_LargestRectangle {
         return result;
     }
     //µ¥µ÷Õ»
-    public int largestRectangleArea1(int[] heights) {
+    public static int largestRectangleArea1(int[] heights) {
         Stack<Integer> stack = new Stack<>();
         Stack<Integer> stack1 = new Stack<>();
         int res = 0;

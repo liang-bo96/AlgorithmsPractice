@@ -59,4 +59,33 @@ public class H32_LongestValidParentheses {
         }
         return result;
     }
+    // for practice
+    public int longestValidParentheses1(String s) {
+        char[] array = s.toCharArray();
+        int[] ref = new int[array.length];
+        Stack<int[]> stack = new Stack<>();
+        for (int i = 0; i < array.length; i++) {
+            if(array[i] == '('){
+                stack.push(new int[]{1,i});
+            }else{
+                if(!stack.isEmpty() && stack.peek()[0] == 1){
+                    ref[i] = 1;
+                    ref[stack.pop()[1]] = 1;
+                }else{
+                    stack.push(new int[]{0,i});
+                }
+            }
+        }
+        int res = 0;
+        int len = 0;
+        for (int i = 0; i < ref.length; i++) {
+            if(ref[i] == 1){
+                len ++;
+            }else{
+                len = 0;
+            }
+            res = Math.max(res,len);
+        }
+        return res;
+    }
 }

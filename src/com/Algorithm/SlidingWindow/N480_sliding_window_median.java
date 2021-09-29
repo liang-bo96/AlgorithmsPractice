@@ -9,7 +9,7 @@ public class N480_sliding_window_median {
 
     public static class WindowMediumHolder {
         //左边大根堆
-        PriorityQueue<Integer> small = new PriorityQueue<>((o1, o2) -> o2 > o1 ? 1 : -1);//细节：这里也要防止溢出,不能用减法
+        PriorityQueue<Integer> small = new PriorityQueue<>(( o1,  o2) -> o2 - o1);//细节：这里也要防止溢出,不能用减法
         //右边小根堆
         PriorityQueue<Integer> large = new PriorityQueue<>();
         //延时删除的哈希表
@@ -114,4 +114,75 @@ public class N480_sliding_window_median {
             return r;
         }
     }
+
+    public double[] medianSlidingWindow(int[] nums, int k) {
+        double[] res = new double[nums.length - k + 1];
+        int[] window = new int[k];
+        //添加初始值
+        for (int i = 0; i < k; i++) {
+            window[i] = nums[i];
+        }
+        //初始的快排，懒得写直接调用
+        Arrays.sort(window);
+        res[0] = getMid(window);
+        //窗口滑动
+        for (int i = 0; i < nums.length - k; i++) {
+            //需要删除的数
+            int index = search(window, nums[i]);
+            //替换为需要插入的数
+            window[index] = nums[i + k];
+            //向后冒泡
+            while (index < window.length - 1 && window[index] > window[index + 1]) {
+                swap(window, index, index + 1);
+                index++;
+            }
+            //向前冒泡
+            while (index > 0 && window[index] < window[index - 1]) {
+                swap(window, index, index - 1);
+                index--;
+            }
+            res[i + 1] = getMid(window);
+        }
+        return res;
+    }
+
+    //交换
+    private void swap(int[] window, int i, int j) {
+        int temp = window[i];
+        window[i] = window[j];
+        window[j] = temp;
+    }
+
+    //求数组的中位数
+    private double getMid(int[] window) {
+        int len = window.length;
+        if (window.length % 2 == 0) {
+            //避免溢出
+            return window[len / 2] / 2.0 + window[len / 2 - 1] / 2.0;
+        } else {
+            return window[len / 2];
+        }
+    }
+
+    //最简单的二分查找
+    private int search(int[] window, int target) {
+        int left = 0;
+        int right = window.length - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (window[mid] > target) {
+                right = mid - 1;
+            } else if (window[mid] < target) {
+                left = mid + 1;
+            } else {
+                return mid;
+            }
+        }
+        return left;
+    }
+
+//    作者：ace7j
+//    链接：https://leetcode-cn.com/problems/sliding-window-median/solution/480-java-er-fen-cha-zhao-mou-pao-pai-xu-8dcw4/
+//    来源：力扣（LeetCode）
+//    著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 }

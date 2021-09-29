@@ -1,6 +1,7 @@
 package com.Algorithm.BackTracking;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -79,5 +80,20 @@ public class N322_Coin_Change {
         }
         map.put(amount+"-"+index,t2);
         return t2;
+    }
+
+    //-------------------dp-------------------------------
+    public int coinChange3(int[] coins, int amount) {
+        int[] dp = new int[amount + 1];
+        Arrays.fill(dp,amount + 1);
+        dp[0] = 0;
+        for (int i = 1; i < dp.length; i++) {
+            for(int coin : coins){
+                if(coin <= i){
+                    dp[i] = Math.min(dp[i],dp[i - coin] +1 );
+                }
+            }
+        }
+        return dp[amount] == amount + 1 ? -1 : dp[amount];
     }
 }

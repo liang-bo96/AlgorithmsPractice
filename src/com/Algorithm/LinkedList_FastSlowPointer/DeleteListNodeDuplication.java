@@ -2,6 +2,8 @@ package com.Algorithm.LinkedList_FastSlowPointer;
 
 import com.Algorithm.LinkedList.ListNode;
 
+import java.util.List;
+
 /*
  在一个排序的链表中，存在重复的结点，请删除该链表中重复的结点，重复的结点不保留，返回链表头指针。 例如，链表1->2->3->3->4->4->5 处理后为 1->2->5
 
@@ -14,7 +16,14 @@ import com.Algorithm.LinkedList.ListNode;
 * */
 public class DeleteListNodeDuplication {
     public static void main(String[] args) {
-
+        ListNode a = new ListNode(1);
+        ListNode b = new ListNode(2);
+        ListNode c = new ListNode(2);
+        ListNode d = new ListNode(3);
+        a.next = b;
+        b.next = c;
+        c.next = d;
+        System.out.println(new DeleteListNodeDuplication().deleteDuplication1(a));
     }
 
     public ListNode deleteDuplication(ListNode pHead) {
@@ -44,22 +53,22 @@ public class DeleteListNodeDuplication {
         if(pHead == null || pHead.next == null){
             return pHead;
         }
-        ListNode head = new ListNode(-1);
-        head.next = pHead;
-        ListNode pre = head;
-        ListNode pos = pHead;
-        while(pos != null){
-            if(pos.val == pos.next.val){
-                while(pos.next != null && pos.val == pos.next.val){
-                    pos = pos.next;
+        ListNode dump = new ListNode(0);
+        dump.next = pHead;
+        ListNode left = pHead;
+        ListNode right = dump;
+        while(left != null){
+            if(left.next != null &&left.val == left.next.val){
+                while(left.next != null && left.val == left.next.val){
+                    left = left.next;
                 }
-                pos = pos.next;
-                pre.next = pos;
+                left = left.next;
+                right.next = left;
             }else{
-                pre = pre.next;
-                pos = pos.next;
+                right = right.next;
+                left = left.next;
             }
         }
-        return head.next;
+        return dump.next;
     }
 }
