@@ -25,10 +25,13 @@ import java.util.Collections;
  *  ‰»Î£∫num1 = "0", num2 = "0"
  *  ‰≥ˆ£∫"0"
  */
-public class N415 {
+public class N415_Stringadd_36add {
+
     public static void main(String[] args) {
-        System.out.println(new N415().addStrings("9", "99"));
-        System.out.println(new N415().addStrings1("9", "0"));
+        System.out.println(new N415_Stringadd_36add().addStrings("9", "99"));
+        System.out.println(new N415_Stringadd_36add().addStrings1("9", "0"));
+        char[] array = "   123".toCharArray();
+        System.out.println(array);
         ArrayList<Integer> l = new ArrayList<>();
         l.add(1);
         l.add(2);

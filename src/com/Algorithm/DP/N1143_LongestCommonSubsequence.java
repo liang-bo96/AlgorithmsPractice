@@ -1,5 +1,6 @@
 package com.Algorithm.DP;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -80,7 +81,7 @@ public class N1143_LongestCommonSubsequence {
      */
     public int longestCommonSubstring(String s1,String s2){
         //dp表示s1以i结尾和s2以j结尾的最长公共子串
-        int[][]dp = new int[s1.length()][s2.length()];
+        int[][]dp = new int[s1.length() + 1][s2.length() + 1];
         int res = 0;
         for (int i = 1; i <= s1.length(); i++) {
             for (int j = 1; j <= s2.length(); j++) {

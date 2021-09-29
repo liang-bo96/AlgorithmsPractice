@@ -1,34 +1,32 @@
-package com.Algorithm.Leetcode;
+package com.Algorithm.LinkedList;
 
-import java.math.BigInteger;
 import java.util.HashMap;
-import java.util.List;
 
 /*
-* 2. ä¸¤æ•°ç›¸åŠ 
-ç»™ä½ ä¸¤ä¸ª éç©º çš„é“¾è¡¨ï¼Œè¡¨ç¤ºä¸¤ä¸ªéè´Ÿçš„æ•´æ•°ã€‚å®ƒä»¬æ¯ä½æ•°å­—éƒ½æ˜¯æŒ‰ç…§ é€†åº çš„æ–¹å¼å­˜å‚¨çš„ï¼Œå¹¶ä¸”æ¯ä¸ªèŠ‚ç‚¹åªèƒ½å­˜å‚¨ ä¸€ä½ æ•°å­—ã€‚
+* 2. Á½ÊıÏà¼Ó
+¸øÄãÁ½¸ö ·Ç¿Õ µÄÁ´±í£¬±íÊ¾Á½¸ö·Ç¸ºµÄÕûÊı¡£ËüÃÇÃ¿Î»Êı×Ö¶¼ÊÇ°´ÕÕ ÄæĞò µÄ·½Ê½´æ´¢µÄ£¬²¢ÇÒÃ¿¸ö½ÚµãÖ»ÄÜ´æ´¢ Ò»Î» Êı×Ö¡£
 
-è¯·ä½ å°†ä¸¤ä¸ªæ•°ç›¸åŠ ï¼Œå¹¶ä»¥ç›¸åŒå½¢å¼è¿”å›ä¸€ä¸ªè¡¨ç¤ºå’Œçš„é“¾è¡¨ã€‚
+ÇëÄã½«Á½¸öÊıÏà¼Ó£¬²¢ÒÔÏàÍ¬ĞÎÊ½·µ»ØÒ»¸ö±íÊ¾ºÍµÄÁ´±í¡£
 
-ä½ å¯ä»¥å‡è®¾é™¤äº†æ•°å­— 0 ä¹‹å¤–ï¼Œè¿™ä¸¤ä¸ªæ•°éƒ½ä¸ä¼šä»¥ 0 å¼€å¤´ã€‚
-
-
-
-ç¤ºä¾‹ 1ï¼š
+Äã¿ÉÒÔ¼ÙÉè³ıÁËÊı×Ö 0 Ö®Íâ£¬ÕâÁ½¸öÊı¶¼²»»áÒÔ 0 ¿ªÍ·¡£
 
 
-è¾“å…¥ï¼šl1 = [2,4,3], l2 = [5,6,4]
-è¾“å‡ºï¼š[7,0,8]
-è§£é‡Šï¼š342 + 465 = 807.
-ç¤ºä¾‹ 2ï¼š
 
-è¾“å…¥ï¼šl1 = [0], l2 = [0]
-è¾“å‡ºï¼š[0]
-ç¤ºä¾‹ 3ï¼š
+Ê¾Àı 1£º
 
-è¾“å…¥ï¼šl1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
-è¾“å‡ºï¼š[8,9,9,9,0,0,0,1]*/
-public class N2 {
+
+ÊäÈë£ºl1 = [2,4,3], l2 = [5,6,4]
+Êä³ö£º[7,0,8]
+½âÊÍ£º342 + 465 = 807.
+Ê¾Àı 2£º
+
+ÊäÈë£ºl1 = [0], l2 = [0]
+Êä³ö£º[0]
+Ê¾Àı 3£º
+
+ÊäÈë£ºl1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
+Êä³ö£º[8,9,9,9,0,0,0,1]*/
+public class N2_ListNodeAdd {
     public static void main(String[] args) {
         ListNode a = new ListNode(1);
         ListNode b = new ListNode(9);
@@ -51,12 +49,9 @@ public class N2 {
         i.next = j;
         System.out.println(Double.MAX_VALUE / Integer.MAX_VALUE);
         System.out.println(addTwoNumbers3(a, j));
-        HashMap<String, Integer> map = new HashMap<>();
-        map.put("", 1);
-        System.out.println(1);
     }
 
-    //éé€’å½’ç‰ˆæœ¬
+    //·Çµİ¹é°æ±¾
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode tem = new ListNode(-1);
         ListNode head = tem;
@@ -95,9 +90,9 @@ public class N2 {
 
     }
 
-    //é€’å½’ç‰ˆæœ¬
+    //µİ¹é°æ±¾
     public ListNode addTwoNumbers1(ListNode l1, ListNode l2) {
-        return this.addTwoNumbers2(l1, l2, 0);
+        return addTwoNumbers2(l1, l2, 0);
     }
 
     public ListNode addTwoNumbers2(ListNode l1, ListNode l2, int a) {
@@ -117,7 +112,7 @@ public class N2 {
         return tem;
     }
 
-    //practice----------------æº¢å‡º
+    //practice----------------Òç³ö
     public static ListNode addTwoNumbers3(ListNode l1, ListNode l2) {
         long temp1 = 0;
         int k = 0;
@@ -148,3 +143,4 @@ public class N2 {
         return re.next;
     }
 }
+
