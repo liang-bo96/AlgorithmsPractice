@@ -2,6 +2,7 @@ package com.Algorithm.LinkedList_ReverseList;
 
 import com.Algorithm.LinkedList.ListNode;
 
+import java.util.List;
 import java.util.Stack;
 
 import static com.Algorithm.LinkedList_ReverseList.Basic.generateListNode;
@@ -40,7 +41,7 @@ k 是一个正整数，它的值小于或等于链表的长度。
 输出：[1]
 *
 * */
-public class ReverseNodesInkGroup {
+public class N25_ReverseNodesInkGroup {
     public static void main(String[] args) {
         ListNode head = generateListNode();
 //        System.out.println(ReverseKListNode(head, 2));
