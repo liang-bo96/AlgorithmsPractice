@@ -24,6 +24,16 @@ import java.util.Arrays;
 public class N440_KthSmallestOrder {
     public static void main(String[] args) {
         System.out.println(new N440_KthSmallestOrder().findKthNumber1(13, 3));
+        int x = 0;
+        int y = 0;
+        for (int i = 1; i <= 20 ; i++) {
+            for (int j = 1; j <= 20 ; j++) {
+                if(Math.abs(i-j) > 3){
+                    x++;
+                }
+            }
+        }
+        System.out.println((double) 272 / 400);
     }
     //reference
     public int findKthNumber1(int n, int k) {

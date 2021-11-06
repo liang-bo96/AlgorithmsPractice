@@ -52,7 +52,6 @@ public class N129_SumNumRootLeaf {
         a.left = e;
         System.out.println(new N129_SumNumRootLeaf().sumNumbers(a));
     }
-
     static List<List<Integer>> list;
 
     public int sumNumbers(TreeNode root) {

@@ -1,4 +1,4 @@
-package com.Algorithm.SlidingWindow;
+package com.Algorithm.PrefixSum;
 //求子数组累加和
 public class PreHandleArray {
     public static void main(String[] args) {

@@ -37,9 +37,8 @@ public class Practice_Syn {
         new Thread(()->{
             synchronized (this){
                 for (int i = 0; i < 10; i++) {
-                    list.add(1);
-                    System.out.println(list.size());
-                    if(list.size() == 5){
+                    System.out.println(i);
+                    if(i== 5){
                         this.notify();
                         try {
                             this.wait();

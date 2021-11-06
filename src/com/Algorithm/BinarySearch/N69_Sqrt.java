@@ -23,6 +23,6 @@ public class N69_Sqrt {
                 left = mid + 1;
             }
         }
-        return left;
+        return left * left == x ? left :left - 1;
     }
 }

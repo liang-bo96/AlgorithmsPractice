@@ -32,7 +32,7 @@ import static com.Algorithm.Leetcode.N46.swap;
  * 合并结果是 [1] 。
  * 注意，因为 m = 0 ，所以 nums1 中没有元素。nums1 中仅存的 0 仅仅是为了确保合并结果可以顺利存放到 nums1 中。
  */
-public class N88 {
+public class N88_MergeTwoSortedArray {
     public static void main(String[] args) {
         int[] a = new int[]{2,0};
         int[] b = new int[]{1};

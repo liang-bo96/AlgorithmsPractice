@@ -28,6 +28,8 @@ public class N162_FindPeekEle {
     public static void main(String[] args) {
         System.out.println(new N162_FindPeekEle().findPeakElement1(new int[]{1}));
     }
+    //数组两侧都是负无穷，要寻找峰值就每次选取相邻两个数值，左边大就说明左边必有山峰（负无穷-（左）高-（右）低），
+    // 右边大说明右边必有山峰（（左）低-（右）高-负无穷）
     public int findPeakElement(int[] nums) {
         int left = 0;
         int right = nums.length - 1;

@@ -21,9 +21,9 @@ package com.Algorithm.DP;
  *  ‰»Î£∫matrix = [["0","1"],["1","0"]]
  *  ‰≥ˆ£∫1
  */
-public class N221 {
+public class N221_maximalSquare {
     public static void main(String[] args) {
-        System.out.println(new N221().maximalSquare(new char[][]{
+        System.out.println(new N221_maximalSquare().maximalSquare(new char[][]{
                 {'1', '1'},
                 {'1', '1'}}));
     }

@@ -23,6 +23,14 @@ package com.Algorithm.DP;
  * 5=1+1+1+1+1
  */
 public class N518_CoinChangeWays {
+    public static void main(String[] args) {
+        System.out.println(new N518_CoinChangeWays().change(5, new int[]{1, 2, 5}));
+    }
+    /**
+     * 对于面额为 coin 的硬币，当 coin≤i≤amount 时，如果存在一种硬币组合的金额之和等于i?coin，
+     * 则在该硬币组合中增加一个面额为 coin 的硬币，即可得到一种金额之和等于 ii 的硬币组合。
+     * 因此需要遍历coins，对于其中的每一种面额的硬币，更新数组 dp 中的每个大于或等于该面额的元素的值。
+     */
     public int change(int amount, int[] coins) {
         int[] dp = new int[amount + 1];
         dp[0] = 1;

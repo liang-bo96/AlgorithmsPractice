@@ -8,7 +8,8 @@ import java.util.List;
 
 import static com.Algorithm.Tree.RecursiveTravel.createTree;
 
-//给你二叉树的根节点root 和一个表示目标和的整数targetSum ，判断该树中是否存在 根节点到叶子节点 的路径，这条路径上所有节点值相加等于目标和targetSum 。
+//给你二叉树的根节点root 和一个表示目标和的整数targetSum ，
+// 判断该树中是否存在 根节点到叶子节点 的路径，这条路径上所有节点值相加等于目标和targetSum 。
 //
 //来源：力扣（LeetCode）
 //链接：https://leetcode-cn.com/problems/path-sum
@@ -84,20 +85,18 @@ public class N112_PathSum {
     }
 
     public static void process(TreeNode root, List<Integer> list) {
+        list.add(root.val);
         if (root.left == null && root.right == null) {
-            list.add(root.val);
             result.add(new ArrayList<>(list));
-            list.remove(list.size() - 1);
             return;
         }
-        list.add(root.val);
         if (root.left != null) {
             process(root.left, new ArrayList<>(list));
         }
         if (root.right != null) {
             process(root.right, new ArrayList<>(list));
         }
-        list.remove(list.size() - 1);
+//        list.remove(list.size() - 1);
     }
 
 }
