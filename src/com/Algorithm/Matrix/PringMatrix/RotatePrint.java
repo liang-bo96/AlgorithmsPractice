@@ -1,4 +1,4 @@
-package com.Algorithm.PringMatrix;
+package com.Algorithm.Matrix.PringMatrix;
 
 public class RotatePrint {
     public static void main(String[] args) {
