@@ -37,10 +37,10 @@ s: "abab" p: "ab"
 起始索引等于 0 的子串是 "ab", 它是 "ab" 的字母异位词。
 起始索引等于 1 的子串是 "ba", 它是 "ab" 的字母异位词。
 起始索引等于 2 的子串是 "ab", 它是 "ab" 的字母异位词。*/
-public class N438 {
+public class N438_YiWeiCi {
     public static void main(String[] args) {
-        System.out.println(new N438().findAnagrams("baa", "aa"));
-        System.out.println(new N438().findAnagrams1("baa", "aa"));
+        System.out.println(new N438_YiWeiCi().findAnagrams("baa", "aa"));
+        System.out.println(new N438_YiWeiCi().findAnagrams1("baa", "aa"));
     }
 
     public List<Integer> findAnagrams(String s, String p) {

@@ -42,11 +42,12 @@ package com.Algorithm.SlidingWindow;
 1 <= k <= nums.length
 */
 
+import java.io.PrintWriter;
 import java.util.*;
 
-public class N239 {
+public class N239_FindMaxInArray {
     public static void main(String[] args) {
-        N239 n239 = new N239();
+        N239_FindMaxInArray n239 = new N239_FindMaxInArray();
         System.out.println(Arrays.toString(n239.maxSlidingWindowPriorityQueue(new int[]{1, 3, -1, -3, 5, 3, 6, 7}, 3)));
         System.out.println(Arrays.toString(n239.maxSlidingWindowSingleQueue(new int[]{1, -1}, 1)));
     }

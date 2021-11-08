@@ -32,13 +32,14 @@ public class StringMultiply {
         }
         String t = "";
         boolean flag = false;
-        for(int i : result){
-            if(i == 0 && !flag){
-                continue;
-            }else{
-                flag = true;
-                t+=i;
+        int i = 0;
+        for (; i < result.length; i++) {
+            if(result[i] != 0){
+                break;
             }
+        }
+        for (int j = i; j < result.length; j++) {
+            t += result[j];
         }
         return t.length() == 0 ? "0" : t;
     }

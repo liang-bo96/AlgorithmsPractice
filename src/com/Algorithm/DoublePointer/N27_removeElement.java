@@ -1,4 +1,7 @@
 package com.Algorithm.DoublePointer;
+
+import static com.Algorithm.DoublePointer.N75_sort_color.swap;
+
 /*27. 移除元素
 给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。
 
@@ -20,7 +23,7 @@ public class N27_removeElement {
     public static void main(String[] args) {
         System.out.println(new N27_removeElement().removeElement(new int[]{3, 2, 2, 3}, 3));
     }
-    //reference
+    //左边是指一个指针，遍历数组，只要不等于val就移动到左边指针位置，保证了剩下元素的相对次序
     public int removeElement(int[] nums, int val) {
         if(nums == null || nums.length == 0){
             return 0;
@@ -33,6 +36,19 @@ public class N27_removeElement {
             }
         }
         return j;
+    }
+    //把所有等于val的元素移动到数组末尾，前面的数组就符合要求，破坏了剩余元素的相对次序
+    public int removeElement2(int[] nums, int val) {
+        if(nums == null || nums.length == 0){
+            return 0;
+        }
+        int right = nums.length - 1;
+        for(int i = nums.length - 1; i >= 0; i--){
+            if(nums[i] == val){
+                swap(nums,i,right--);
+            }
+        }
+        return right + 1;
     }
     //practice
     public int removeElement1(int[] nums, int val) {

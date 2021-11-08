@@ -2,7 +2,7 @@ package com.Algorithm.BackTracking;
 
 public class N312_BurstBalloons__unresolved {
     public static void main(String[] args) {
-        System.out.println(new N312_BurstBalloons__unresolved().maxCoins(new int[]{3,1,2,4}));
+        System.out.println(new N312_BurstBalloons__unresolved().maxCoins(new int[]{1,5}));
     }
     public int maxCoins(int[] nums) {
         process(nums,0,0);

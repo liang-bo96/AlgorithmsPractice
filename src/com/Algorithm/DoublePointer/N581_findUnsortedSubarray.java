@@ -28,6 +28,31 @@ public class N581_findUnsortedSubarray {
     public static void main(String[] args) {
         System.out.println(new N581_findUnsortedSubarray().findUnsortedSubarray(new int[]{1,3,2,3,3}));
     }
+    //references
+    public int findUnsortedSubarray1(int[] arr) {
+        if(arr == null || arr.length < 2){
+            return 0;
+        }
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
+        int R = 0;
+        int L = 0;
+        //找到最右侧小于max的节点，该节点右侧就是有序递增数组
+        for (int i = 0; i < arr.length; i++) {
+            if(max > arr[i]) {
+                R = i;
+            }
+            max = Math.max(max, arr[i]);
+        }
+        //找到最左侧大于min的节点，该节点左侧是递减数组
+        for (int i = arr.length - 1; i >= 0; i--) {
+            if(min < arr[i]) {
+                L = i;
+            }
+            min = Math.min(min, arr[i]);
+        }
+        return R == L ? 0 : R - L + 1;
+    }
     //暴力方法 超时
     public int findUnsortedSubarray(int[] nums) {
         int min = Integer.MAX_VALUE;
@@ -71,30 +96,5 @@ public class N581_findUnsortedSubarray {
             }
         }
         return true;
-    }
-    //references
-    public int findUnsortedSubarray1(int[] arr) {
-        if(arr == null || arr.length < 2){
-            return 0;
-        }
-        int max = Integer.MIN_VALUE;
-        int min = Integer.MAX_VALUE;
-        int R = 0;
-        int L = 0;
-        //找到最右侧小于max的节点，该节点右侧就是有序递增数组
-        for (int i = 0; i < arr.length; i++) {
-            if(max > arr[i]) {
-                R = i;
-            }
-            max = Math.max(max, arr[i]);
-        }
-        //找到最左侧大于min的节点，该节点左侧是递减数组
-        for (int i = arr.length - 1; i >= 0; i--) {
-            if(min < arr[i]) {
-                L = i;
-            }
-            min = Math.min(min, arr[i]);
-        }
-        return R == L ? 0 : R - L + 1;
     }
 }

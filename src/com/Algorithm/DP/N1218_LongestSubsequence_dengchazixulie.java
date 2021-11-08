@@ -1,5 +1,6 @@
 package com.Algorithm.DP;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -36,6 +37,21 @@ public class N1218_LongestSubsequence_dengchazixulie {
             //找之前是否出现过满足当前位置数值减去difference的数值，有的话就在之前的基础上加一
             dp[i] = Math.max(dp[i],map.getOrDefault(arr[i] - difference,0) + 1);
             map.put(arr[i],dp[i]);
+            result = Math.max(result,dp[i]);
+        }
+        return result;
+    }
+    //超时
+    public int longestSubsequence1(int[] arr, int difference) {
+        int result = 0;
+        int[] dp = new int[arr.length];
+        Arrays.fill(dp,1);
+        for(int i = 0; i < arr.length; i++){
+            for(int j = 0; j <i; j++){
+                if(arr[j] == arr[i] - difference){
+                    dp[i] = Math.max(dp[i],dp[j] + 1);
+                }
+            }
             result = Math.max(result,dp[i]);
         }
         return result;
