@@ -29,7 +29,7 @@ import java.util.Arrays;
  *  ‰»Î£∫nums = [1]
  *  ‰≥ˆ£∫[1]
  */
-public class N31_NextPermutation {
+public class    N31_NextPermutation {
     public static void main(String[] args) {
         new N31_NextPermutation().nextPermutation(new int[]{1,4,5,2,1});
     }
