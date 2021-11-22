@@ -18,7 +18,7 @@ public class T01_AtomicInteger {
 	/*synchronized*/ void m() { 
 		for (int i = 0; i < 10000; i++)
 			//if count1.get() < 1000
-			count.incrementAndGet(); //count1++
+			count.addAndGet(2); //count1++
 	}
 
 	public static void main(String[] args) {
