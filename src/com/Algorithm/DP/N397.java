@@ -26,28 +26,29 @@ public class N397 {
                 dp[i + 1] = Math.min(dp[i + 1], dp[i] + 1);
             }
             dp[i - 1] = Math.min(dp[i - 1], dp[i] + 1);
-            if ((i-1) * 2 < n + 10) {
-                dp[(i - 1) * 2] = Math.min(dp[(i - 1) * 2], dp[i- 1] + 1);
+            if ((i - 1) * 2 < n + 10) {
+                dp[(i - 1) * 2] = Math.min(dp[(i - 1) * 2], dp[i - 1] + 1);
             }
         }
-        return (int)dp[n];
+        return (int) dp[n];
     }
+
     public int integerReplacement(int n) {
-        LinkedList<long[]> queue=new LinkedList<>();
-        Set<Long> set=new HashSet<>();
-        queue.offer(new long[]{n,0});
-        set.add((long)n);
-        while(!queue.isEmpty()){
-            long[] cur=queue.poll();
-            long num=cur[0];
-            long step=cur[1];
-            if(num==1){
-                return (int)step;
+        LinkedList<long[]> queue = new LinkedList<>();
+        Set<Long> set = new HashSet<>();
+        queue.offer(new long[]{n, 0});
+        set.add((long) n);
+        while (!queue.isEmpty()) {
+            long[] cur = queue.poll();
+            long num = cur[0];
+            long step = cur[1];
+            if (num == 1) {
+                return (int) step;
             }
-            if(num%2==0){
-                if(!set.contains(num/2)){
-                    set.add(num/2);
-                    queue.offer(new long[]{num/2,step+1});
+            if (num % 2 == 0) {
+                if (!set.contains(num / 2)) {
+                    set.add(num / 2);
+                    queue.offer(new long[]{num / 2, step + 1});
                 }
 
             }
@@ -56,9 +57,9 @@ public class N397 {
                     set.add(num+1);
                     queue.offer(new long[]{num+1,step+1});
                 }
-                if(!set.contains(num-1)){
-                    set.add(num-1);
-                    queue.offer(new long[]{num-1,step+1});
+                if (!set.contains(num - 1)) {
+                    set.add(num - 1);
+                    queue.offer(new long[]{num - 1, step + 1});
                 }
             }
         }
