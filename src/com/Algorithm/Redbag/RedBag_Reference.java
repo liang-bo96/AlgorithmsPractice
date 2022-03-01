@@ -2,7 +2,7 @@ package com.Algorithm.Redbag;
 
 import java.util.*;
 
-public class RedBag1 {
+public class RedBag_Reference {
     public static void main(String[] args) {
         int totalAmount=1000;//红包金额分
         int totalPeopleNum=5;//红包个数

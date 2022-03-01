@@ -48,18 +48,20 @@ public class ZuHe {
         list.add(2);
         list.add(3);
         list.add(4);
-        process(list,0,2,new ArrayList<>());
+        process(list, 0, 2, new ArrayList<>());
         System.out.println(result);
     }
+
     static List<List<Integer>> result;
-    public static void process(List<Integer>arr,int location,int len,List<Integer> tem){
-        if(tem.size() == len){
+
+    public static void process(List<Integer> arr, int location, int len, List<Integer> tem) {
+        if (tem.size() == len) {
             result.add(tem);
             return;
         }
         for (int i = location; i < arr.size(); i++) {
             tem.add(arr.get(i));
-            process(arr,i + 1 ,len,new ArrayList<>(tem));
+            process(arr, i + 1, len, new ArrayList<>(tem));
             tem.remove(tem.size() - 1);
         }
     }

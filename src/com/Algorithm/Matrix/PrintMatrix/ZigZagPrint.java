@@ -1,4 +1,4 @@
-package com.Algorithm.Matrix.PringMatrix;
+package com.Algorithm.Matrix.PrintMatrix;
 
 public class ZigZagPrint {
     public static void main(String[] args) {

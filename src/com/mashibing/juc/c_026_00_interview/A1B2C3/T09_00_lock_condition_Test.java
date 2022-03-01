@@ -9,7 +9,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class T09_00_lock_condition_Test {
-    static Integer a = 9;
+    static int a = 9;
     public static void main(String[] args) {
 
 

@@ -25,7 +25,7 @@ package com.Algorithm.BinarySearch;
  * 0 <= t.length <= 10^4
  * 两个字符串都只由小写字符组成。
  */
-public class N392 {
+public class N392_IsSubsequence {
     static char[] arr;
     public static void main(String[] args) {
         System.out.println(isSubsequence("abxcd", "asdkbllllllllllllclld"));

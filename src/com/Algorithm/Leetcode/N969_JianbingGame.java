@@ -47,9 +47,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class N969 {
+public class N969_JianbingGame {
+    /**
+     * 思路：先找到最大值翻到第一位，然后整体反转，这样最大值就放到了正确位置（最后一位），然后复制剩下的数组进行后续递归翻转操作
+     * @param args
+     */
     public static void main(String[] args) {
-        System.out.println(new N969().pancakeSort(new int[]{3,2,4,1}));
+        System.out.println(new N969_JianbingGame().pancakeSort(new int[]{3,2,4,1}));
     }
     List<Integer> res = new ArrayList<>();
     public List<Integer> pancakeSort(int[] arr) {

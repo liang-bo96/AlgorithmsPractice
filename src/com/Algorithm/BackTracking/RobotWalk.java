@@ -54,7 +54,8 @@ public class RobotWalk {
         if(tem_location == location){
             return robotMove(location,tem_location - 1,left - 1,destination);
         }
-        return robotMove(location,tem_location - 1,left - 1,destination) + robotMove(location,tem_location + 1,left - 1,destination);
+        return robotMove(location,tem_location - 1,left - 1,destination) +
+                robotMove(location,tem_location + 1,left - 1,destination);
     }
 
 
