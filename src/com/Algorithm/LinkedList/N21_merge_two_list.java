@@ -4,7 +4,7 @@ import java.util.List;
 
 public class N21_merge_two_list {
     public static void main(String[] args) {
-
+        System.out.println(111);
     }
 
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {

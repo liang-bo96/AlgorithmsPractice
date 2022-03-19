@@ -27,7 +27,6 @@ public class Code_10_10_4 {
         // int caseNum = sc.nextInt();
         // double ret = process(caseNum);
         // System.out.println(String.format("%.5f", ret));
-
         for (int i = 1; i <= 5; i++) {
             System.out.println(i + " -> " + String.format("%.5f", process(i)));
         }
