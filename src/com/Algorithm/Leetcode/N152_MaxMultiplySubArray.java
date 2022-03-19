@@ -22,7 +22,7 @@ import java.util.Arrays;
  */
 public class N152_MaxMultiplySubArray {
     public static void main(String[] args) {
-        System.out.println(maxProduct1(new int[]{-2, 0, -1}));
+        System.out.println(maxProduct1(new int[]{-2, 2, -1}));
     }
     public static int maxProduct1(int[] nums) {
         int result = Integer.MIN_VALUE;

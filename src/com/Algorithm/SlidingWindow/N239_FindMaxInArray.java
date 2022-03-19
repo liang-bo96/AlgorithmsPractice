@@ -54,20 +54,20 @@ public class N239_FindMaxInArray {
 
     //优先队列实现
     public int[] maxSlidingWindowPriorityQueue(int[] nums, int k) {
-        if(k > nums.length) return new int[0];
+        if (k > nums.length) return new int[0];
         PriorityQueue<Integer> queue = new PriorityQueue<>(new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
-                return o2-o1;
+                return o2 - o1;
             }
         });
-        for(int i = 0 ; i < k ; i++){
+        for (int i = 0; i < k; i++) {
             queue.add(nums[i]);
         }
         int[] result = new int[nums.length - k + 1];
-        for(int i = 0 ; i < nums.length-k ; i++){
+        for (int i = 0; i < nums.length - k; i++) {
             result[i] = queue.peek();
-            queue.add(nums[k+i]);
+            queue.add(nums[k + i]);
             queue.remove(nums[i]);
         }
         result[nums.length - k] = queue.poll();
@@ -76,18 +76,18 @@ public class N239_FindMaxInArray {
 
     //单调队列实现
     public int[] maxSlidingWindowSingleQueue(int[] nums, int k) {
-        if(k > nums.length) return new int[0];
+        if (k > nums.length) return new int[0];
 
         SingleQueue queue = new SingleQueue();
         int[] result = new int[nums.length - k + 1];
 
-        for(int i = 0 ; i < nums.length;i++){
-            if(i < k){
+        for (int i = 0; i < nums.length; i++) {
+            if (i < k) {
                 queue.add(nums[i]);
-            }else{
-                result[i-k] = queue.max();
+            } else {
+                result[i - k] = queue.max();
                 queue.add(nums[i]);
-                queue.delete(nums[i-k]);
+                queue.delete(nums[i - k]);
             }
         }
         result[nums.length - k] = queue.max();
@@ -97,21 +97,24 @@ public class N239_FindMaxInArray {
 
 
 }
-class SingleQueue{
+
+class SingleQueue {
     public Deque<Integer> queue = new ArrayDeque<>();
 
-    public void  add(int n){
-        while(!queue.isEmpty() && n > queue.getLast()){
+    public void add(int n) {
+        while (!queue.isEmpty() && n > queue.getLast()) {
             queue.removeLast();
         }
         queue.addLast(n);
     }
-    public void  delete(int n){
-        if(!queue.isEmpty() && queue.getFirst() == n){
+
+    public void delete(int n) {
+        if (!queue.isEmpty() && queue.getFirst() == n) {
             queue.removeFirst();
         }
     }
-    public int max(){
+
+    public int max() {
         return queue.getFirst();
     }
 }

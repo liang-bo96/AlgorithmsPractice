@@ -12,7 +12,7 @@ public class N142_DetecCycle_2 {
         b.next = c;
         c.next = d;
         d.next = b;
-        detectCycle(a);
+        System.out.println(detectCycle(a).val);
     }
 
     public static ListNode detectCycle(ListNode head) {

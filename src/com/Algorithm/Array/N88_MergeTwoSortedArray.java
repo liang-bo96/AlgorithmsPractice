@@ -1,4 +1,4 @@
-package com.Algorithm.Leetcode;
+package com.Algorithm.Array;
 
 import static com.Algorithm.Leetcode.N46.swap;
 

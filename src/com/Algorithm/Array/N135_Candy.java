@@ -1,4 +1,4 @@
-package com.Algorithm.Leetcode;
+package com.Algorithm.Array;
 
 import java.util.Arrays;
 
@@ -28,7 +28,7 @@ import java.util.Arrays;
  */
 public class N135_Candy {
     public static void main(String[] args) {
-        System.out.println(candy(new int[]{1, 3, 4, 5, 2}));
+        System.out.println(candy2(new int[]{1, 2, 3, 3, 3, 2, 1}));
     }
 
     public static int candy(int[] ratings) {
@@ -48,6 +48,26 @@ public class N135_Candy {
             }
         }
         for (int i : re) {
+            count += i;
+        }
+        return count;
+    }
+
+    public static int candy2(int[] ratings) {
+        int[] arr = new int[ratings.length];
+        Arrays.fill(arr, 1);
+        for (int i = 1; i < ratings.length; i++) {
+            if (ratings[i] > ratings[i - 1] && arr[i] <= arr[i - 1]) {
+                arr[i] = arr[i - 1] + 1;
+            }
+        }
+        for (int i = ratings.length - 2; i >= 0; i--) {
+            if (ratings[i] > ratings[i + 1] && arr[i] <= arr[i + 1]) {
+                arr[i] = arr[i + 1] + 1;
+            }
+        }
+        int count = 0;
+        for (int i : arr) {
             count += i;
         }
         return count;

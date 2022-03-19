@@ -51,8 +51,7 @@ public class trap {
             right[i] = Math.max(height[i+1],right[i+1]);
         }
         for(int i = 1; i < height.length; i++){
-            result += (Math.min(left[i],right[i]) - height[i]) > 0
-                    ? Math.min(left[i],right[i]) - height[i] : 0;
+            result += Math.max((Math.min(left[i], right[i]) - height[i]), 0);
         }
         return   result;
     }
