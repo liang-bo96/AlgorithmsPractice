@@ -1,4 +1,4 @@
-package com.Algorithm.StringMultiply;
+package com.Algorithm.String.StringMultiply;
 //字符串相乘
 public class StringMultiply {
     public static void main(String[] args) {

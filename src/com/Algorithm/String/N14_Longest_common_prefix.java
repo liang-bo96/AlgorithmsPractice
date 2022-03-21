@@ -1,4 +1,4 @@
-package com.Algorithm.Leetcode;
+package com.Algorithm.String;
 
 /**
  * 14. 最长公共前缀

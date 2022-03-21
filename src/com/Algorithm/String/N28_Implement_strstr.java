@@ -1,4 +1,4 @@
-package com.Algorithm.Leetcode;
+package com.Algorithm.String;
 
 import java.util.HashSet;
 /*28. 实现 strStr()
@@ -26,7 +26,7 @@ import java.util.HashSet;
 
 输入：haystack = "", needle = ""
 输出：0*/
-public class N28Implement_strstr {
+public class N28_Implement_strstr {
     public static void main(String[] args) {
         System.out.println(strStr("aa", "a"));
     }

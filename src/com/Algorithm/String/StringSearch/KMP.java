@@ -1,4 +1,4 @@
-package com.Algorithm.StringSearch;
+package com.Algorithm.String.StringSearch;
 
 public class KMP {
     public static void main(String[] args) {

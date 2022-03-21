@@ -1,4 +1,4 @@
-package com.Algorithm.Leetcode;
+package com.Algorithm.Skill;
 
 /**
  * 50. Pow(x, n)
@@ -17,8 +17,7 @@ package com.Algorithm.Leetcode;
  */
 public class N50_Pow {
     public static void main(String[] args) {
-        System.out.println(new N50_Pow().myPow(2, 2));
-    }
+        System.out.println(new N50_Pow().myPow(2, -8)); }
     public double myPow(double x, int n) {
         double res = 1.0;
         for(int i = n; i != 0; i /= 2){
