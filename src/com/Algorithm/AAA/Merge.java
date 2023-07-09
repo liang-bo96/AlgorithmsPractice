@@ -61,7 +61,7 @@ public class Merge {
             //合并
             merge(arr, left, mid, right, temp);
 
-
+            System.out.println(111);
         }
     }
     //合并的方法
